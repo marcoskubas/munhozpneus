@@ -1,0 +1,138 @@
+/**
+* General Settings
+*
+* @project Stela
+* @version 2013
+* @package general.css
+* @author Daiane Ambos
+* @copyright 2013 Daiane Ambos
+*/
+
+/**
+* Bold
+*
+* @section bold
+*/
+
+b, 
+strong { font-weight: bold; }
+
+/**
+* Float
+*
+* @section float
+*/
+
+.fLeft { float: left }
+.fRight { float: right; }
+.fNone { float: none; }
+
+/**
+* Display
+*
+* @section display
+*/
+
+.dBlock { display: block; }
+.dInline { display: inline; }
+.dInlineBlock { display: inline-block; }
+.dNone { display: none; }
+
+/**
+* Position
+*
+* @section position
+*/
+
+.pAbsolute { position: absolute; }
+.pRelative { position: relative; }
+
+/**
+* Clear
+*
+* @section clear
+*/
+
+.cBoth { clear: both; }
+.cLeft { clear: left; }
+.cRight { clear: right; }
+
+/**
+* Text-align
+*
+* @section textAlign
+*/
+
+.aLeft { text-align: left; }
+.aRight { text-align: right; }
+.aCenter { text-align: center; }
+.aJustify { text-align: justify; }
+
+/**
+* Align Images and Bottons
+*
+* @section alignImagesBottons
+*/
+
+.imgNone,
+.bottomNone { margin:10px 0 8px 0; }
+
+.imgCenter,
+.bottomCenter {
+    display:block; 
+    margin:10px auto; 
+    text-align:center;
+}
+
+.imgLeft,
+.bottomLeft {
+    width:auto; 
+    float:left; 
+    margin:10px 10px 0 0;
+}
+
+.imgRight,
+.bottomRight {
+    width:auto; 
+    float:right; 
+    margin:0 0 0 10px;
+}
+
+.bottomNone,
+.bottomCenter,
+.bottomLeft,
+.bottomRight { margin: 1px auto 0 auto; }
+
+
+/**
+* Vertical-align
+*
+* @section verticalAlign
+*/
+
+.vMiddle { vertical-align: middle; }
+.vTop { vertical-align: top; }
+.vBaseline { vertical-align: baseline; }
+.vBottom { vertical-align: bottom; }
+.vCentral { vertical-align: central; }
+.vSub { vertical-align: sub; }
+.vSuper { vertical-align: super; }
+
+/**
+* Remove border
+*
+* @section removeBorder
+*/
+
+.bNone { border: none; }
+
+/**
+* Font Size
+*
+* @section fontSize
+*/
+.XLFont { font-size: 18px; }
+.LFont { font-size: 16px; }
+.MFont { font-size: 15px; }
+.SFont { font-size: 14px; }
+.SSFont { font-size: 12px; }

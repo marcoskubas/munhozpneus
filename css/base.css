@@ -1,0 +1,149 @@
+/**
+* Base
+*
+* @project Munhoz Pneus
+* @version 2013
+* @package base.css
+* @author Daiane Ambos
+* @copyright 2013 Daiane Ambos
+*
+*/
+
+
+body {
+    overflow-y: scroll;
+    background-color: #f5f5f5;
+    font-family: "Arial", Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+a,
+a:hover,
+a:active,
+a:focus { outline: none; }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 { 
+    color: #28566a;
+    font-weight: normal;
+}
+
+h1 { font-size: 30px; margin-top: 0; }
+h2 { 
+    font-size: 26px; 
+    margin-top: 0; 
+    border-bottom: 1px solid #28566a;
+    margin: 0 0 30px 0;
+}
+h3 { font-size: 20px; margin-top: 0; }
+h4 { font-size: 18px; margin-top: 0; }
+h5 { font-size: 16px; margin-top: 0; }
+h6 { font-size: 14px; margin-top: 0; }
+
+header {
+    min-height: 50px;
+    background-color: #193b4b;
+}
+
+header .navbar { margin: 0; }
+header .navbar-inner { padding: 0; }
+header .navbar-inverse .navbar-inner { border: none; }
+header .navbar-inverse .header-admin { 
+    height: 62px;
+    background: #193b4b url(../images/bg-header.jpg) repeat-x left top;
+}
+
+.navbar .btn-navbar { margin: 10px 10px 0 0; }
+
+/* logo */
+header .logo {
+    width: 167px;
+    height: 44px;
+    background: transparent url(../images/logo.png) repeat-x left top;
+    float: left;
+    margin: 10px 0 0 20px;
+    letter-spacing: -0.2px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #ededed;
+    text-indent: -600px;
+}
+header .logo:hover { text-decoration: none; }
+
+.user-bar {
+    height: 100%;
+    float: right;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.user-bar > li {
+    height: 50px;
+    position: relative;
+    float: right;
+    border-right: 1px solid #14303e;
+}
+.user-bar > li > a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    color: #ffffff;
+}
+.user-bar > li:first-child { border-right: none; }
+.user-bar .user,
+.user-bar .logoff {
+    padding: 0 10px;
+    line-height: 55px;
+    font-size: 13px;
+}
+.user-bar .user { color: #FFF; }
+.user-bar .logoff > a {
+    line-height: 55px;
+    color: #ededed;
+}
+
+aside {
+    clear: both;
+    float: left;
+    width: 230px;
+    height: 0;
+}
+
+#content {
+    min-height: 500px;
+    margin-left: 230px;
+    padding: 20px 30px;
+    background-color: #ffffff;
+}
+
+header .navigation { 
+    border: none;
+    border-radius: 0;
+    -moz-border-radius: 0;
+    -webkit-border-radius: 0;
+}
+
+.icon-user,
+.icon-share-alt { margin-left: 10px; }
+
+/* Formulário */
+.btn-primary:hover, 
+.btn-primary:focus, 
+.btn-primary:active, 
+.btn-primary.active, 
+.btn-primary.disabled, 
+.btn-primary[disabled] { background: #28566a; }
+
+.btn-primary {
+    background-color: #28566a;
+    background-image: -moz-linear-gradient(top, #1c4557, #28566a);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#1c4557), to(#1c4557));
+    background-image: -webkit-linear-gradient(top, #1c4557, #28566a);
+    background-image: -o-linear-gradient(top, #1c4557, #28566a);
+    background-repeat: repeat-x;
+    border-color: #28566a #1c4557 #1c4557;
+}
