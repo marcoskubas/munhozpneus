@@ -12,6 +12,9 @@
         <link href="css/base.css" rel="stylesheet">
         <link href="css/breadcrumbs.css" rel="stylesheet">
         <link href="css/menu.css" rel="stylesheet">
+        <link href="css/tinytable.css" rel="stylesheet">
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- TinyTable -->
+        <script src="js/tinytable.js"></script>
     </head>
     <body>
