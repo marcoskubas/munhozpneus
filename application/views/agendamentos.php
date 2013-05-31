@@ -120,7 +120,7 @@
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="data">Data:</label>
-                    <div class="controls"><input type="text" id="data" class="input-xxlarge" /></div>
+                    <div class="controls"><input type="text" id="data" class="input-medium" /></div>
                 </div>
             </div>
         </div>
@@ -128,7 +128,7 @@
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="hora">Hora:</label>
-                    <div class="controls"><input type="text" id="hora" class="input-xxlarge" /></div>
+                    <div class="controls"><input type="text" id="hora" class="input-medium" /></div>
                 </div>
             </div>
         </div>
