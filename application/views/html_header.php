@@ -34,8 +34,15 @@
     <div class="navbar-inner navigation">
         <!-- breadcrumbs -->
         <ul class="breadcrumb">
-            <li class="home"><a href="#">Home</a><span class="divider"></span></li>
-            <li class="active"><?=$title?></li>
+            <li class="home"><?php echo anchor('', 'Home')?><span class="divider"></span></li>
+            <?
+            if(!isset($breadcrumb)){
+                echo "<li class='active'>{$title}</li>";
+            }else{
+                echo "<li class='active'>".anchor($pagina, $title)."<span class='divider'></span></li>";
+                echo "<li class='active'>{$breadcrumb}</li>";
+            }
+            ?>
         </ul>
     </div>
 </header>

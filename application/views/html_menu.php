@@ -1,14 +1,57 @@
 <!-- menu principal -->
 <aside class="visible-desktop">
     <ul class="menu">
-        <li <?php if($pagina == 'agendamentos'){ echo "class='active'"; }?>><a href="agendamentos">Agendamento / Orçamento</a></li>
-        <li <?php if($pagina == 'clientes'){ echo "class='active'"; }?>><a href="clientes">Clientes</a></li>
-        <li <?php if($pagina == 'servicos'){ echo "class='active'"; }?>><a href="servicos">Serviços</a></li>
-        <li <?php if($pagina == 'produtos'){ echo "class='active'"; }?>><a href="produtos">Produtos</a></li>
-        <li <?php if($pagina == 'marcas'){ echo "class='active'"; }?>><a href="marcas">Marcas</a></li>
-        <li <?php if($pagina == 'modelos'){ echo "class='active'"; }?>><a href="modelos">Modelos</a></li>
-        <li <?php if($pagina == 'combustiveis'){ echo "class='active'"; }?>><a href="combustiveis">Combustíveis</a></li>
-        <li <?php if($pagina == 'cidades'){ echo "class='active'"; }?>><a href="cidades">Cidades</a></li>
-        <li <?php if($pagina == 'usuarios'){ echo "class='active'"; }?>><a href="usuarios">Usuários</a></li>
+        <?php 
+        //Agendamento / Orçamento
+        $active = ($pagina == 'agendamentos') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('agendamentos', 'Agendamento / Orçamento');
+        echo "</li>";
+        //Clientes
+        $active = ($pagina == 'clientes') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('clientes', 'Clientes');
+        echo "</li>";
+        //Serviços
+        $active = ($pagina == 'servicos') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('servicos', 'Serviços');
+        echo "</li>";
+        //Produtos
+        $active = ($pagina == 'produtos') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('produtos', 'Produtos');
+        echo "</li>";
+        //Marcas
+        $active = ($pagina == 'marcas') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('marcas', 'Marcas');
+        echo "</li>";
+        //Produtos
+        $active = ($pagina == 'modelos') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('modelos', 'Modelos');
+        echo "</li>";
+        //Combustíveis
+        $active = ($pagina == 'combustiveis') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('combustiveis', 'Combustíveis');
+        echo "</li>";
+        //Combustíveis
+        $active = ($pagina == 'combustiveis') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('combustiveis', 'Combustíveis');
+        echo "</li>";
+        //Cidades
+        $active = ($pagina == 'cidades') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('cidades', 'Cidades');
+        echo "</li>";
+        //Usuários
+        $active = ($pagina == 'usuarios') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('usuarios', 'Usuários');
+        echo "</li>";
+        ?>
     </ul>
 </aside>
