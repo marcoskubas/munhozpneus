@@ -6,15 +6,17 @@
         <title>Sistema de Gerenciamento de Oficina - Munhoz Pneus</title>
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <link href="css/bootstrap.css" rel="stylesheet"/>
-        <link href="css/bootstrap-responsive.css" rel="stylesheet"/>
-        <link href="css/general.css" rel="stylesheet"/>
-        <link href="css/base.css" rel="stylesheet"/>
-        <link href="css/breadcrumbs.css" rel="stylesheet"/>
-        <link href="css/menu.css" rel="stylesheet"/>
-        <link href="css/messages.css" rel="stylesheet"/>
-        <link href="css/tabela.css" rel="stylesheet" />
-        <link href="css/tinytable.css" rel="stylesheet">
+        <?php
+        echo link_tag('css/bootstrap.css');
+        echo link_tag('css/bootstrap-responsive.css');
+        echo link_tag('css/general.css');
+        echo link_tag('css/base.css');
+        echo link_tag('css/breadcrumbs.css');
+        echo link_tag('css/menu.css');
+        echo link_tag('css/messages.css');
+        echo link_tag('css/tabela.css');
+        echo link_tag('css/tinytable.css');
+        ?>
         <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <!-- TinyTable -->
         <script src="js/tinytable.js"></script>

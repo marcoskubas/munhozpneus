@@ -64,6 +64,22 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+$db['design']['hostname'] = 'localhost';
+$db['design']['username'] = 'root';
+$db['design']['password'] = 'teste';
+$db['design']['database'] = 'munhoz';
+$db['design']['dbdriver'] = 'mysql';
+$db['design']['dbprefix'] = '';
+$db['design']['pconnect'] = TRUE;
+$db['design']['db_debug'] = TRUE;
+$db['design']['cache_on'] = FALSE;
+$db['design']['cachedir'] = '';
+$db['design']['char_set'] = 'utf8';
+$db['design']['dbcollat'] = 'utf8_general_ci';
+$db['design']['swap_pre'] = '';
+$db['design']['autoinit'] = TRUE;
+$db['design']['stricton'] = FALSE;
+
 
 /* End of file database.php */
 /* Location: ./application/config/database.php */
