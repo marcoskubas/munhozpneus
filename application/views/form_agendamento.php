@@ -135,7 +135,8 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <div class="controls"><button type="submit" class="btn btn-primary">Salvar</button></div>
+                    <div class="controls"><button type="button" class="btn btn-primary">&laquo; Voltar</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button></div>
                 </div>
             </div>
         </div>
