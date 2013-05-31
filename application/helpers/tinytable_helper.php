@@ -41,7 +41,7 @@ function tinytable($records, $fields){
                           }
                         ?>
                     </tr>
-                    <?
+                    <?php
                     $i++;
                 }
                 ?>

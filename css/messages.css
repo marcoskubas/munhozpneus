@@ -1,0 +1,73 @@
+/**
+* Mensagens
+*
+* @project Stela
+* @version 2013
+* @package messages.css
+* @author Daiane Ambos
+* @copyright 2013 Daiane Ambos
+*
+*/
+
+.close {
+    float: right;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 18px;
+    color: #000000;
+    text-shadow: 0 1px 0 #ffffff;
+    opacity: 0.2;
+    filter: alpha(opacity=20);
+}
+.close:hover {
+    color: #000000;
+    text-decoration: none;
+    opacity: 0.4;
+    filter: alpha(opacity=40);
+    cursor: pointer;
+}
+.mensagem {
+    padding: 8px;
+    margin: 15px 0;
+    -webkit-border-radius: 1px;
+    -moz-border-radius: 1px;
+    border-radius: 1px;
+    line-height: 18px;
+}
+.mensagem .close {
+    position: relative;
+    top: -2px;
+    right: -21px;
+    line-height: 18px;
+}
+.sucesso {
+    background-color: #e8f8e2;
+    border: 1px solid #d5f0ca;
+    color: #468847;
+}
+.erro {
+    background-color: #ffebeb;
+    border: 1px solid #ffdada;
+    color: #F30;
+}
+.informacao {
+    background-color: #eaf8ff;
+    border: 1px solid #dff4ff;
+    color: #3a87ad;
+}
+.aviso {
+    background-color: #fcf8e3;
+    border: 1px solid #fbeed5;
+    color: #c09853;
+}
+.required {
+    color: #F30;
+    font-size: 12px;
+    padding: 3px 0;
+    margin-bottom: 5px;
+}
+
+.asterisco {
+    padding: 0 2px;
+    font-size: 14px;
+}
