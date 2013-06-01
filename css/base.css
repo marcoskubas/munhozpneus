@@ -20,7 +20,10 @@ body {
 a,
 a:hover,
 a:active,
-a:focus { outline: none; }
+a:focus { 
+    outline: none;
+    color: #28566a;
+}
 
 h1,
 h2,
