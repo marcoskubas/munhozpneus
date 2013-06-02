@@ -1,6 +1,13 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
     <h2>Clientes</h2>
+    <div class="actions fRight">
+        <button type="button" class="btn"><i class="icon-plus"></i> Novo</button>
+        <button type="button" class="btn"><i class="icon-pencil"></i> Editar</button>
+        <button type="button" class="btn"><i class="icon-trash"></i> Excluir</button>
+        <button type="button" class="btn"><i class="icon-search"></i> Visualizar</button>
+        <button type="button" class="btn"><i class="icon-print"></i> Imprimir</button>
+    </div>
     <?php 
     tinytable($records, $fields);
     ?>

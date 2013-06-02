@@ -40,7 +40,7 @@ h2 {
     font-size: 26px; 
     margin-top: 0; 
     border-bottom: 1px solid #28566a;
-    margin: 0 0 30px 0;
+    margin: 0 0 5px 0;
 }
 h3 { font-size: 20px; margin-top: 0; }
 h4 { font-size: 18px; margin-top: 0; }
@@ -150,3 +150,5 @@ header .navigation {
     background-repeat: repeat-x;
     border-color: #28566a #1c4557 #1c4557;
 }
+
+.actions { padding: 10px 0; }
