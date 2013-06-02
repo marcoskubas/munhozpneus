@@ -123,19 +123,21 @@
 #tablenav img { cursor:pointer }
 #tablenav div {
     float:left; 
-    margin-right:15px;
+    margin-right:10px;
 }
-#tablelocation { float:right; }
+#tablenav div:first-child, 
+#tablenav div:last-child { margin: 5px 10px 0 10px; }
+#tablenav select { 
+    width: 75px; 
+    margin-bottom: 0;
+}
+#tablelocation { 
+    float: right;
+    margin-right: 5px;
+}
 #tablelocation select { margin-bottom: 0; }
-#tablelocation div {
-    float:left; 
-    margin-left:15px
-}
-#tablelocation select, 
-#tablenav select { width: 75px; }
-.page { 
-    margin:2px 0 0;
-    padding: 0 10px 0 0;
-}
+#tablelocation div { float:left; }
+#tablelocation table td span { padding-right: 5px; }
+.page { padding: 0 5px; }
 #selectedrow td { background:#e8e8e8; }
 .tinytable tbody tr { cursor: pointer; }
