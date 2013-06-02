@@ -37,11 +37,6 @@
         echo "<li {$active}>";
             echo anchor('combustiveis', 'Combustíveis');
         echo "</li>";
-        //Combustíveis
-        $active = ($pagina == 'combustiveis') ? "class='active'" : "";
-        echo "<li {$active}>";
-            echo anchor('combustiveis', 'Combustíveis');
-        echo "</li>";
         //Cidades
         $active = ($pagina == 'cidades') ? "class='active'" : "";
         echo "<li {$active}>";
