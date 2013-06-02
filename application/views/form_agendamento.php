@@ -1,13 +1,13 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
-    <h2>Agendamentos / Orçamentos</h2>
-    <form class="box-example form-horizontal">
+    <h2>Agendar / Orçar Serviços</h2>
+    <form class="form-horizontal">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="nomeCliente">Cliente:</label>
-                    <div class="controls"><input type="text" id="nomeCliente" class="input-xxlarge" /></div>
+                    <div class="controls"><input type="text" id="nomeCliente" class="input-maxlarge" /></div>
                 </div>
             </div>
         </div>
@@ -16,7 +16,7 @@
                 <div class="control-group">
                     <label class="control-label" for="selectVeiculos">Veículo:</label>
                     <div class="controls">
-                        <select name="veiculos" id="selectVeiculos" class="input-xxlarge">
+                        <select name="veiculos" id="selectVeiculos" class="maxlarge">
                             <option>selecione</option>
                             <option>Renault Clio</option>
                         </select>
@@ -135,7 +135,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <div class="controls"><button type="button" class="btn btn-primary">&laquo; Voltar</button>
+                    <div class="controls"><button type="button" class="btn">&laquo; Voltar</button>
                     <button type="submit" class="btn btn-primary">Salvar</button></div>
                 </div>
             </div>

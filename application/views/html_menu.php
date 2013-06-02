@@ -22,12 +22,17 @@
         echo "<li {$active}>";
             echo anchor('produtos', 'Produtos');
         echo "</li>";
+        //Veículos
+        $active = ($pagina == 'veiculos') ? "class='active'" : "";
+        echo "<li {$active}>";
+            echo anchor('veiculos', 'Veículos');
+        echo "</li>";
         //Marcas
         $active = ($pagina == 'marcas') ? "class='active'" : "";
         echo "<li {$active}>";
             echo anchor('marcas', 'Marcas');
         echo "</li>";
-        //Produtos
+        //Modelos
         $active = ($pagina == 'modelos') ? "class='active'" : "";
         echo "<li {$active}>";
             echo anchor('modelos', 'Modelos');

@@ -152,3 +152,7 @@ header .navigation {
 }
 
 .actions { padding: 10px 0; }
+.infoForm { 
+    font-size: 11px;
+    padding: 0 5px;
+}
