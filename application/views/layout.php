@@ -38,6 +38,7 @@
                                 <li><a href="#">Clientes</a></li>
                                 <li><a href="#">Serviços</a></li>
                                 <li><a href="#">Produtos</a></li>
+                                <li><a href="#">Veículos</a></li>
                                 <li><a href="#">Marcas</a></li>
                                 <li><a href="#">Modelos</a></li>
                                 <li><a href="#">Combustíveis</a></li>
@@ -63,6 +64,7 @@
                 <li <?php if($pagina == 'clientes'){ echo "class='active'"; }?>><a href="clientes">Clientes</a></li>
                 <li <?php if($pagina == 'servicos'){ echo "class='active'"; }?>><a href="servicos">Serviços</a></li>
                 <li <?php if($pagina == 'produtos'){ echo "class='active'"; }?>><a href="produtos">Produtos</a></li>
+                <li <?php if($pagina == 'veiculos'){ echo "class='active'"; }?>><a href="veiculos">Veículos</a></li>
                 <li <?php if($pagina == 'marcas'){ echo "class='active'"; }?>><a href="marcas">Marcas</a></li>
                 <li <?php if($pagina == 'modelos'){ echo "class='active'"; }?>><a href="modelos">Modelos</a></li>
                 <li <?php if($pagina == 'combustiveis'){ echo "class='active'"; }?>><a href="combustiveis">Combustíveis</a></li>
