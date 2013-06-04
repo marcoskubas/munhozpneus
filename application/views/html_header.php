@@ -35,7 +35,7 @@
         <!-- breadcrumbs -->
         <ul class="breadcrumb">
             <li class="home"><?php echo anchor('', 'Home')?><span class="divider"></span></li>
-            <?
+            <?php
             if(!isset($breadcrumb)){
                 echo "<li class='active'>{$title}</li>";
             }else{
