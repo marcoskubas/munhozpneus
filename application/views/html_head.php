@@ -17,8 +17,8 @@
         echo link_tag('css/tabela.css');
         echo link_tag('css/tinytable.css');
         ?>
-        <script src="js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <script src="<?php echo base_url()?>js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <!-- TinyTable -->
-        <script src="js/tinytable.js"></script>
+        <script src="<?php echo base_url()?>js/tinytable.js"></script>
     </head>
     <body>
