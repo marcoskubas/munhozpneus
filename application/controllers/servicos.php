@@ -1,6 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Servicos extends CI_Controller{
+    
+    public function __construct() {
+        parent::__construct();
+        //LOAD MODEL
+        $this->load->model('servicos_model','servicos');
+    }
 
     public function index(){
         $this->load->helper('tinytable');
@@ -10,7 +16,7 @@ class Servicos extends CI_Controller{
             'title' => 'Serviços'
         );
         //Criando querys SQL
-        $data['records'] = $this->db->get('servicos')->result();
+        $data['records'] = $this->servicos->listar_servicos();
         //Configuração Listagem Registros
         $data['fields'] = array(
                             'id' => 'Código',
