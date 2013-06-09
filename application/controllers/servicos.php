@@ -54,7 +54,7 @@ class Servicos extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Alteração'
         );
-	$data['result'] = $this->servicos->get_byid($id);
+	$data['record'] = $this->servicos->get_byid($id);
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);

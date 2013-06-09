@@ -34,7 +34,7 @@ function tinytable($records, $fields){
                 foreach ($records as $record) {
                     ?>
                     <tr class="row-tinytable">
-                        <td align="center"><input type="checkbox" name="row<?=$i?>" id="row<?=$i?>" value="<?=$record->id?>" /></td>
+                        <td align="center"><input type="checkbox" name="row<?=$i?>" id="row<?=$i?>" class="jsform" value="<?=$record->id?>" /></td>
                         <?php
                         foreach ($fields as $key => $value) {
                             echo "<td>".utf8_decode($record->$key)."</td>";

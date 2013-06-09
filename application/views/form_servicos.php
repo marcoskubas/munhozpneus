@@ -1,10 +1,5 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
-<?
-foreach($result as $record){
-    
-}
-?>
     <h2>Cadastrar Serviço</h2>
     <form class="form-horizontal" action="<?php echo base_url()?>servicos/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
@@ -35,7 +30,8 @@ foreach($result as $record){
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <div class="controls"><button type="button" class="btn">&laquo; Voltar</button>
+                    <div class="controls">
+                        <button type="button" class="btn btn-back">&laquo; Voltar</button>
                         <button type="submit" class="btn btn-primary">Salvar</button>
                         <input type="hidden" name="id" id="id" value="<?php echo $record->id?>" />
                     </div>

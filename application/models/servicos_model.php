@@ -40,7 +40,7 @@ class Servicos_model extends CI_Model{
     public function get_byid($id=NULL){   
         if($id != NULL){
             $this->db->where('id',$id);
-            return $this->db->get($this->table)->result();
+            return $this->db->get($this->table)->row();
         }else{
             return false;
         }

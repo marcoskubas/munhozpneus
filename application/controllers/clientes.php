@@ -32,7 +32,7 @@ class Clientes extends CI_Controller{
     public function cadastro(){
         //Dados página acessada
         $page = array(
-            'pagina' => 'cliente',
+            'pagina' => 'clientes',
             'title' => 'Cidades',
             'breadcrumb' => 'Cadastro'
         );

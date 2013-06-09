@@ -30,8 +30,11 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <div class="controls"><button type="button" class="btn">&laquo; Voltar</button>
-                        <button type="submit" class="btn btn-primary">Salvar</button></div>
+                    <div class="controls">
+                        <button type="button" class="btn btn-back">&laquo; Voltar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                        <input type="hidden" name="id" id="id" value="<?php echo $record->id?>" />
+                    </div>
                 </div>
             </div>
         </div>

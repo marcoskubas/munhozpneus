@@ -16,9 +16,16 @@
         echo link_tag('css/messages.css');
         echo link_tag('css/tabela.css');
         echo link_tag('css/tinytable.css');
+        echo link_tag('css/uniform.css');
         ?>
         <script src="<?php echo base_url()?>js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <!-- jQuery -->
+        <script src="<?php echo base_url()?>js/jquery-1.10.1.js"></script>
         <!-- TinyTable -->
         <script src="<?php echo base_url()?>js/tinytable.js"></script>
+        <!-- Uniform -->
+        <script src="<?php echo base_url()?>js/uniform.js"></script>
+        <!-- Objeto Sistema -->
+        <script src="<?php echo base_url()?>js/sistema.js"></script>
     </head>
     <body>

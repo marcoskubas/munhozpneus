@@ -44,5 +44,7 @@
             }
             ?>
         </ul>
+        <input type="hidden" name="select-page" id="select-page" value="<?php echo $pagina ?>" />
+        <input type="hidden" name="base-url" id="base-url" value="<?php echo base_url() ?>" />
     </div>
 </header>
