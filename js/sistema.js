@@ -5,17 +5,34 @@ var Sistema = {
     init : function(){
         //Habilita variáveis padrão
         Sistema.setDefault();
+        $('.checker[id^=uniform-row]').data('clicked', false);
+        $('.checker[id^=uniform-row]').click(function(){
+            $(this).data('clicked', true);
+        });
         //Habilita checkin checkbos's ao selecionar linhas tabelas
         $('.tinytable tbody tr').click(function(){
             var check = $(this).find('.checker[id^=uniform-row] .checked').length;
-            if(check == 0){
-                $(this).find('input[type=checkbox]').attr('checked', true);
-                $(this).find('.checker[id^=uniform-row] span').addClass('checked');
-            }else{
-                $(this).find('input[type=checkbox]').attr('checked', false);
-                $(this).find('.checker[id^=uniform-row] span').removeClass('checked');
+            var clicked = $(this).find('.checker[id^=uniform-row]').data('clicked');
+            if(clicked == true){
+                if(check == 1){
+                    $(this).find('input[type=checkbox]').attr('checked', true);
+                    $(this).find('.checker[id^=uniform-row] span').addClass('checked');
+                }else{
+                    $(this).find('input[type=checkbox]').attr('checked', false);
+                    $(this).find('.checker[id^=uniform-row] span').removeClass('checked');
+                }
+                $(this).find('.checker[id^=uniform-row]').data('clicked', false);
+            }else if(clicked == false){
+                if(check == 0){
+                    $(this).find('input[type=checkbox]').attr('checked', true);
+                    $(this).find('.checker[id^=uniform-row] span').addClass('checked');
+                }else{
+                    $(this).find('input[type=checkbox]').attr('checked', false);
+                    $(this).find('.checker[id^=uniform-row] span').removeClass('checked');
+                }
             }
         });
+        
         //Habilita ação botão Novo
         $('.btn-new').click(function(){
             Sistema.setBtnNew();
@@ -61,9 +78,13 @@ var Sistema = {
     },
     setBtnDelete : function(){
         var countCheck = $('.checker[id^=uniform-row] .checked').length;
-        if(countCheck == 1){
+        if(countCheck == 0){
+            Sistema.setMessage('Nenhum registro selecionado!', 'aviso');
+        }else if(countCheck == 1){
             var id = $('.checker[id^=uniform-row] .checked').find('input').val();
             location.href = Sistema.baseUrl+Sistema.pageSelect+'/excluir/'+id;
+        }else{
+            Sistema.setMessage('Mais de um registro selecionado, selecione apenas um registro!', 'aviso');
         }
     },
     setBtnView : function(){
@@ -79,10 +100,17 @@ var Sistema = {
         $("input.jsform, select.jsform, textarea.jsform").uniform();
     },
     setMessage : function(message, tipo){
-        $('.mensagem').removeClass('hidden aviso sucesso informacao erro').addClass(tipo);
-        $('.mensagem').html('<span>'+message+'</span>');
+        if(tipo === ''){
+            $('.mensagem').removeClass('aviso sucesso informacao erro').fadeOut('slow');
+        }else{
+            $('.mensagem').removeClass('hidden aviso sucesso informacao erro').addClass(tipo).fadeIn('slow');
+            $('.mensagem').html('<span>'+message+'</span>');   
+        }
     },
     setTinytable : function(records){
+        // Oculta mensagens temporárias
+        setTimeout( "Sistema.setMessage('', '')", 3000);
+        // Formata configurações Tinytable
         var Start = true;
         if(records === '0'){
             Start = false;
