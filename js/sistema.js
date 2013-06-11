@@ -5,31 +5,19 @@ var Sistema = {
     init : function(){
         //Habilita variáveis padrão
         Sistema.setDefault();
-        $('.checker[id^=uniform-row]').data('clicked', false);
-        $('.checker[id^=uniform-row]').click(function(){
-            $(this).data('clicked', true);
-        });
+        //Habilita Dialog Message
+        Sistema.setDialogView();
         //Habilita checkin checkbos's ao selecionar linhas tabelas
-        $('.tinytable tbody tr').click(function(){
-            var check = $(this).find('.checker[id^=uniform-row] .checked').length;
-            var clicked = $(this).find('.checker[id^=uniform-row]').data('clicked');
-            if(clicked == true){
-                if(check == 1){
-                    $(this).find('input[type=checkbox]').attr('checked', true);
-                    $(this).find('.checker[id^=uniform-row] span').addClass('checked');
-                }else{
-                    $(this).find('input[type=checkbox]').attr('checked', false);
-                    $(this).find('.checker[id^=uniform-row] span').removeClass('checked');
-                }
-                $(this).find('.checker[id^=uniform-row]').data('clicked', false);
-            }else if(clicked == false){
-                if(check == 0){
-                    $(this).find('input[type=checkbox]').attr('checked', true);
-                    $(this).find('.checker[id^=uniform-row] span').addClass('checked');
-                }else{
-                    $(this).find('input[type=checkbox]').attr('checked', false);
-                    $(this).find('.checker[id^=uniform-row] span').removeClass('checked');
-                }
+        $('.tinytable tbody tr td:not(:has(.checker))').click(function(){
+            var $this = $(this);
+            var $tr = $this.parent('tr');
+            var check = $tr.find('.checker[id^=uniform-row] .checked').length;
+            if(check == 0){
+                $tr.find('input[type=checkbox]').attr('checked', true);
+                $tr.find('.checker[id^=uniform-row] span').addClass('checked');
+            }else{
+                $tr.find('input[type=checkbox]').attr('checked', false);
+                $tr.find('.checker[id^=uniform-row] span').removeClass('checked');
             }
         });
         
@@ -88,7 +76,16 @@ var Sistema = {
         }
     },
     setBtnView : function(){
-        Sistema.setMessage('Funcionalidade "Visualizar" não implementada!', 'aviso');
+        var countCheck = $('.checker[id^=uniform-row] .checked').length;
+        if(countCheck == 0){
+            Sistema.setMessage('Nenhum registro selecionado!', 'aviso');
+        }else if(countCheck == 1){
+            var id = $('.checker[id^=uniform-row] .checked').find('input').val();
+            var conteudo = id;
+            Sistema.openDialogView(conteudo);
+        }else{
+            Sistema.setMessage('Mais de um registro selecionado, selecione apenas um registro!', 'aviso');
+        }
     },
     setBtnPrint : function(){
         Sistema.setMessage('Funcionalidade "Imprimir" não implementada!', 'aviso');
@@ -106,6 +103,29 @@ var Sistema = {
             $('.mensagem').removeClass('hidden aviso sucesso informacao erro').addClass(tipo).fadeIn('slow');
             $('.mensagem').html('<span>'+message+'</span>');   
         }
+    },
+    openDialogView : function(conteudo){
+      $('#content-message').html(conteudo);
+      $('#dialog-message').dialog({ 
+                                    'autoOpen' : true, 
+                                    'title': 'Visualização Registro'
+                                   });
+    },
+    setDialogView : function(){
+        $( "#dialog-message" ).dialog({
+            autoOpen: false,
+            modal: true,
+            width: 500,
+            height: 350,
+            show: {
+                effect: "blind",
+                duration: 1000
+            },
+            hide: {
+                effect: "explode",
+                duration: 1000
+            }
+        });  
     },
     setTinytable : function(records){
         // Oculta mensagens temporárias

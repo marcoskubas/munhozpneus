@@ -11,7 +11,7 @@
                 <a class="logo" href="#" title="Munhoz Pneus - Sistema de Gestão de Oficina">Munhoz Pneus</a>
                 <!-- perfil -->
                 <ul class="user-bar">
-                    <li class="logoff"><a href="#">Sair<span class="icon-white icon-share-alt"></span></a></li>
+                    <li class="logoff"><a href="<?php echo base_url() ?>/home/logout">Sair<span class="icon-white icon-share-alt"></span></a></li>
                     <li class="user">João Pedro da Silva<span class="icon-white icon-user"></li>
                 </ul>
                 <!-- menu responsive -->

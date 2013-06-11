@@ -1,21 +1,25 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Modelos extends CI_Controller{
+    
+    private $alias = 'modelos';
+    private $title = 'Modelos';
+    
+    public function __construct() {
+        parent::__construct();
+        //LOAD MODEL
+        $this->load->model($this->alias.'_model',$this->alias);
+    }
 
     public function index(){
         $this->load->helper('tinytable');
         //Dados página acessada
         $page = array(
-            'pagina' => 'modelos',
-            'title' => 'Modelos'
+            'pagina' => $this->alias,
+            'title' => $this->title
         );
-        //Criando querys SQL com JOIN pelo uso do Active Record.		
-        $this->db->select('m.id, m.descricao, ma.descricao marca');
-        $this->db->from('modelos m');
-        $this->db->join('marcas ma','m.idmarca = ma.id','inner');
-        $this->db->order_by('m.descricao','ASC');
-        //Recebendo os dados das modelos
-        $data['records'] = $this->db->get()->result();
+        
+        $data['records'] = $this->modelos->get_all();
         //Configuração Listagem Registros
         $data['fields'] = array(
                             'id' => 'Código',
@@ -25,38 +29,36 @@ class Modelos extends CI_Controller{
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('modelos', $data);
+        $this->load->view($this->alias, $data);
         $this->load->view('html_footer');
     }
     
     public function cadastro(){
         //Dados página acessada
         $page = array(
-            'pagina' => 'modelo',
-            'title' => 'Modelos',
+            'pagina' => $this->alias,
+            'title' => $this->title,
             'breadcrumb' => 'Cadastro'
         );
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('form_modelo');
+        $this->load->view('form_'.$this->alias);
         $this->load->view('html_footer');
     }
     
     public function editar($id){
         //Dados página acessada
         $page = array(
-            'pagina' => 'modelos',
-            'title' => 'Modelos',
+            'pagina' => $this->alias,
+            'title' => $this->title,
             'breadcrumb' => 'Alteração'
         );
-        $this->db->where('id',$id);
-	$data['record'] = $this->db->get('modelos')->result();
-        
+	$data['record'] = $this->modelos->get_byid($id);
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('form_modelo', $data);
+        $this->load->view('form_'.$this->alias, $data);
         $this->load->view('html_footer');
     }
     
@@ -65,26 +67,24 @@ class Modelos extends CI_Controller{
 	$this->load->library('form_validation');
         $this->form_validation->set_rules('descricao', 'Descrição', 'required');
         if($this->form_validation->run() == FALSE){	
-            $this->editar($id);
+            if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{
-            foreach ($_POST as $key) {
+            foreach ($_POST as $key => $value) {
                 if($key != 'id'){
-                    $data[$key] = $this->input->post($key);    
+                    $data[$key] = utf8_encode($this->input->post($key));
                 }
             }
             if(empty($id)){
-                $this->db->insert('modelos',$data);
+                $this->modelos->do_insert($data);
             }else{
-                $this->db->where('id',$id);
-                $this->db->update('modelos',$data);   
+                $this->modelos->do_update($data, array('id' => $id));
             }
-            redirect(base_url()."modelos");
         }
     }
     
     public function excluir($id){
-        $this->db->where('id',$id);
-        $this->db->delete('modelos');
-        redirect(base_url()."modelos");
+        if($id > 0){
+            $this->modelos->do_delete(array('id' => $id));
+        }
     }
 }

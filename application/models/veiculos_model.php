@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Modelos_model extends CI_Model{
+class Veiculos_model extends CI_Model{
     
-    private $table = 'modelos';
-    private $view  = 'modelos';
+    private $table = 'veiculos';
+    private $view  = 'veiculos';
     
     function __construct(){
         parent::__construct();
@@ -35,10 +35,12 @@ class Modelos_model extends CI_Model{
     
     public function get_all(){
         //Criando querys SQL com JOIN pelo uso do Active Record.		
-        $this->db->select('m.id, m.descricao, ma.descricao marca');
-        $this->db->from('modelos m');
+        $this->db->select('v.id, c.nome, ma.descricao marca, m.descricao modelo, v.placa');
+        $this->db->from('veiculos v');
+        $this->db->join('clientes c','v.idcliente = c.id','inner');
+        $this->db->join('modelos m','v.idmodelo = m.id','inner');
         $this->db->join('marcas ma','m.idmarca = ma.id','inner');
-        $this->db->order_by('m.descricao','ASC');
+        $this->db->order_by('c.nome','ASC');
         return $this->db->get()->result();
     }
     

@@ -7,20 +7,23 @@
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <?php
-        echo link_tag('css/bootstrap.css');
-        echo link_tag('css/bootstrap-responsive.css');
-        echo link_tag('css/general.css');
-        echo link_tag('css/base.css');
-        echo link_tag('css/breadcrumbs.css');
-        echo link_tag('css/menu.css');
-        echo link_tag('css/messages.css');
-        echo link_tag('css/tabela.css');
-        echo link_tag('css/tinytable.css');
-        echo link_tag('css/uniform.css');
+        echo link_tag('css/bootstrap.css')."\n";
+        echo link_tag('css/bootstrap-responsive.css')."\n";
+        echo link_tag('css/general.css')."\n";
+        echo link_tag('css/base.css')."\n";
+        echo link_tag('css/breadcrumbs.css')."\n";
+        echo link_tag('css/menu.css')."\n";
+        echo link_tag('css/messages.css')."\n";
+        echo link_tag('css/tabela.css')."\n";
+        echo link_tag('css/tinytable.css')."\n";
+        echo link_tag('css/uniform.css')."\n";
+        echo link_tag('css/jquery-ui-dark-hive.css')."\n";
         ?>
         <script src="<?php echo base_url()?>js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <!-- jQuery -->
-        <script src="<?php echo base_url()?>js/jquery-1.10.1.js"></script>
+        <script src="<?php echo base_url()?>js/jquery-1.10.1.min.js"></script>
+        <!-- jQuery UI-->
+        <script src="<?php echo base_url()?>js/jquery-ui-1.10.3.min.js"></script>
         <!-- TinyTable -->
         <script src="<?php echo base_url()?>js/tinytable.js"></script>
         <!-- Uniform -->

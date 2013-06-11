@@ -50,10 +50,10 @@ function tinytable($records, $fields){
         <div id="tablefooter">
             <div id="tablenav">
                 <div>
-                    <img src="images/tinytable/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
-                    <img src="images/tinytable/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
-                    <img src="images/tinytable/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
-                    <img src="images/tinytable/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
+                    <img src="<?php echo base_url()?>images/tinytable/first.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1,true)" />
+                    <img src="<?php echo base_url()?>images/tinytable/previous.gif" width="16" height="16" alt="First Page" onclick="sorter.move(-1)" />
+                    <img src="<?php echo base_url()?>images/tinytable/next.gif" width="16" height="16" alt="First Page" onclick="sorter.move(1)" />
+                    <img src="<?php echo base_url()?>images/tinytable/last.gif" width="16" height="16" alt="Last Page" onclick="sorter.move(1,true)" />
                 </div>
                 <div>
                     <select id="pagedropdown"></select>
