@@ -10,7 +10,7 @@
 */
 
 body {
-    background: #440103 url(../images/login/bg-login.jpg) left top repeat-x;
+    background: #1c4354 url(../images/login/bg-login.jpg) left top repeat-x;
     color: #FFF;
     font-family: "Arial", Helvetica, sans-serif;
     font-size: 12px;
@@ -26,11 +26,11 @@ body {
 
 .logo {
     width: 400px;
-    height: 84px;
+    height: 66px;
     background: url(../images/login/logo.png) no-repeat;
 }
 
 .form-horizontal .controls { margin-left: 110px; }
 .form-horizontal .control-label { width: 100px; }
 
-.btn { color: #7b1316; }
+.btn { color: #193c4b; }

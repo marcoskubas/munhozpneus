@@ -12,7 +12,7 @@ class Home extends CI_Controller {
     }
 
     public function login(){		
-        $usuario = $this->input->post('usuario');
+        $usuario = $this->input->post('email');
         $senha = $this->input->post('senha');
         $this->db->where('email',$usuario);
         $this->db->where('pasw',md5($senha));
@@ -27,7 +27,7 @@ class Home extends CI_Controller {
             redirect(base_url()."agendamentos");
         }
         else{
-                redirect(base_url()."home/index");
+            redirect(base_url()."home/index");
         }
     }
 

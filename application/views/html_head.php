@@ -7,10 +7,14 @@
         <meta name="description" content=""/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <?php
+        $current = current_url();
         echo link_tag('css/bootstrap.css')."\n";
         echo link_tag('css/bootstrap-responsive.css')."\n";
         echo link_tag('css/general.css')."\n";
         echo link_tag('css/base.css')."\n";
+        if($current == 'http://localhost/munhozpneus/home' || $current == 'http://localhost/munhozpneus/home/index'){
+            echo link_tag('css/login.css')."\n";   
+        }
         echo link_tag('css/breadcrumbs.css')."\n";
         echo link_tag('css/menu.css')."\n";
         echo link_tag('css/messages.css')."\n";
