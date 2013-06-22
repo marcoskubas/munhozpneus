@@ -8,24 +8,24 @@
                     <span class="icon-bar"></span>
                 </a>
                 <!-- logo -->
-                <a class="logo" href="#" title="Munhoz Pneus - Sistema de Gestão de Oficina">Munhoz Pneus</a>
+                <a class="logo" href="<?php echo base_url()?>agendamentos" title="Munhoz Pneus - Sistema de Gestão de Oficina">Munhoz Pneus</a>
                 <!-- perfil -->
                 <ul class="user-bar">
-                    <li class="logoff"><a href="<?php echo base_url() ?>/home/logout">Sair<span class="icon-white icon-share-alt"></span></a></li>
-                    <li class="user">João Pedro da Silva<span class="icon-white icon-user"></li>
+                    <li class="logoff"><a href="<?php echo base_url()?>home/logout">Sair<span class="icon-white icon-share-alt"></span></a></li>
+                    <li class="user"><?php echo $this->session->userdata('usuario');?><span class="icon-white icon-user"></li>
                 </ul>
                 <!-- menu responsive -->
                 <div class="nav-collapse collapse">
                     <ul class="topMenu hidden-desktop">
-                        <li class="active"><a href="#">Agendamento / Orçamento</a></li>
-                        <li><a href="#">Clientes</a></li>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Marcas</a></li>
-                        <li><a href="#">Modelos</a></li>
-                        <li><a href="#">Combustíveis</a></li>
-                        <li><a href="#">Cidades</a></li>
-                        <li><a href="#">Usuários</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'agendamentos');?>><a href="<?php echo base_url();?>agendamentos">Agendamento / Orçamento</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'clientes');?>><a href="<?php echo base_url();?>clientes">Clientes</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'servicos');?>><a href="<?php echo base_url();?>servicos">Serviços</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'produtos');?>><a href="<?php echo base_url();?>produtos">Produtos</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'marcas');?>><a href="<?php echo base_url();?>marcas">Marcas</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'modelos');?>><a href="<?php echo base_url();?>modelos">Modelos</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'combustiveis');?>><a href="<?php echo base_url();?>combustiveis">Combustíveis</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'cidades');?>><a href="<?php echo base_url();?>cidades">Cidades</a></li>
+                        <li<?php echo checkActiveLink($pagina, 'usuarios');?>><a href="<?php echo base_url();?>usuarios">Usuários</a></li>
                     </ul>
                 </div>
             </div>

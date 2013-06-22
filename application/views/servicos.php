@@ -1,15 +1,9 @@
 <?php
 //Verificar se alguma ação foi executada
-$sessionMessage = $this->session->userdata('acaoOk');
-$acaoMessage = "";
-$classMessage = "";
-if(!empty($sessionMessage)):
-    $acaoMessage = $this->session->userdata('acaoOk');
-    $classMessage = " sucesso";
-    $this->session->set_userdata('acaoOk','');
-else:
-    $classMessage = " hidden";
-endif;
+$acoes = checkActionMessage($this->session->userdata('acaoOk'));
+$acaoMessage = $acoes['acaoMessage'];
+$classMessage = $acoes['classMessage'];
+$this->session->set_userdata('acaoOk','');
 ?>
 <!-- Content -->
 <div id="content" class="container-fluid">

@@ -7,8 +7,13 @@ class Cidades extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
+        if(!$this->session->userdata('session_id') || !$this->session->userdata('logado')){
+            redirect(base_url()."home");
+        }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
+        //Model's Auxiliares
+        $this->load->model('estados_model','estados');
     }
 
     public function index(){
@@ -40,10 +45,12 @@ class Cidades extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Cadastro'
         );
+        $data['estados'] = $this->estados->get_all();
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('form_'.$this->alias);
+        $this->load->view('form_'.$this->alias, $data);
         $this->load->view('html_footer');
     }
     
@@ -55,6 +62,8 @@ class Cidades extends CI_Controller{
             'breadcrumb' => 'Alteração'
         );
 	$data['record'] = $this->cidades->get_byid($id);
+        $data['estados'] = $this->estados->get_all();
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);

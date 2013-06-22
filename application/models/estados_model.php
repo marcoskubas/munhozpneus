@@ -1,9 +1,9 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Clientes_model extends CI_Model{
+class Estados_model extends CI_Model{
     
-    private $table = 'clientes';
-    private $view = 'clientes';
+    private $table = 'estados';
+    private $view = 'estados';
     
     function __construct(){
         parent::__construct();
@@ -34,17 +34,13 @@ class Clientes_model extends CI_Model{
     }
     
     public function get_all(){
-        $this->db->select('id, nome, endereco, celular, telefone, email');
-        $this->db->from('clientes');
-        return $this->db->get()->result();
+        $this->db->order_by('descricao','ASC');
+        return $this->db->get($this->table)->result();
     }
     
     public function get_byid($id=NULL){   
         if($id != NULL){
-            $this->db->select('cl.id, cl.nome, cl.numero, cl.cpf, cl.complemento, cl.bairro, cl.endereco, cl.celular, cl.telefone, cl.email, cl.idcidade, ci.idestado');
-            $this->db->from('clientes cl');
-            $this->db->join('cidades ci','cl.idcidade = ci.id','inner');
-            $this->db->where('cl.id',$id);
+            $this->db->where('id',$id);
             return $this->db->get($this->table)->row();
         }else{
             return false;

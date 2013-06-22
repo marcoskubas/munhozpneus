@@ -1,7 +1,14 @@
+<?php
+//Verificar se alguma ação foi executada
+$acoes = checkActionMessage($this->session->userdata('acaoOk'));
+$acaoMessage = $acoes['acaoMessage'];
+$classMessage = $acoes['classMessage'];
+$this->session->set_userdata('acaoOk','');
+?>
 <!-- Content -->
 <div id="content" class="container-fluid">
     <h2>Marcas</h2>
-    <div class="mensagem hidden"></div>
+    <div class="mensagem <?php echo $classMessage?>"><?php echo $acaoMessage?></div>
     <div class="actions fRight">
         <?php $this->load->view('html_buttons');?>
     </div>

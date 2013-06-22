@@ -42,6 +42,15 @@ class Cidades_model extends CI_Model{
         return $this->db->get()->result();
     }
     
+    public function get_byestado($idestado=NULL){
+        if($idestado != NULL){
+            $this->db->where('idestado',$idestado);
+            return $this->db->get($this->table)->result();
+        }else{
+            return false;
+        }
+    }
+    
     public function get_byid($id=NULL){   
         if($id != NULL){
             $this->db->where('id',$id);

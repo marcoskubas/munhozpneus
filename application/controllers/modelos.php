@@ -7,8 +7,13 @@ class Modelos extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
+        if(!$this->session->userdata('session_id') || !$this->session->userdata('logado')){
+            redirect(base_url()."home");
+        }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
+        //Model's Auxiliares
+        $this->load->model('marcas_model','marcas');
     }
 
     public function index(){
@@ -40,10 +45,13 @@ class Modelos extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Cadastro'
         );
+        //Dados Form
+        $data['marcas']         = $this->marcas->get_all();
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('form_'.$this->alias);
+        $this->load->view('form_'.$this->alias, $data);
         $this->load->view('html_footer');
     }
     
@@ -54,7 +62,10 @@ class Modelos extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Alteração'
         );
-	$data['record'] = $this->modelos->get_byid($id);
+        //Dados Form
+        $data['record'] = $this->modelos->get_byid($id);
+        $data['marcas'] = $this->marcas->get_all();
+	
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);

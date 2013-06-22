@@ -2,7 +2,7 @@
 class Home extends CI_Controller {
 	
     public function __construct(){
-            parent::__construct();
+        parent::__construct();
     }
 
     public function index(){
@@ -20,7 +20,7 @@ class Home extends CI_Controller {
         $usuario = $this->db->get('usuarios')->result();		
         if(count($usuario)===1){
             $dados = array(
-                'usuario'  => $usuario[0]->usuario,
+                'usuario'  => $usuario[0]->name,
                 'logado' => TRUE
              );
             $this->session->set_userdata($dados);

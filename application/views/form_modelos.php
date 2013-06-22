@@ -1,13 +1,13 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
-    <h2>Cadastrar Modelo</h2>
-    <form class="form-horizontal">
+    <h2><?php echo $breadcrumb;?> Modelo</h2>
+    <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="descricao">Modelo:</label>
-                    <div class="controls"><input type="text" id="descricao" class="input-maxlarge" /></div>
+                    <div class="controls"><input type="text" id="descricao" name="descricao" value="<?php echo utf8_decode($record->descricao)?>" class="input-maxlarge" /></div>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="observacoes">Observações:</label>
-                    <div class="controls"><textarea rows="8" class="input-maxlarge"></textarea></div>
+                    <div class="controls"><textarea rows="8" class="input-maxlarge" id="comentarios" name="comentarios"><?php echo utf8_decode($record->comentarios)?></textarea></div>
                 </div>
             </div>
         </div>
@@ -24,9 +24,15 @@
                 <div class="control-group">
                     <label class="control-label" for="selectMarcas">Marca:</label>
                     <div class="controls">
-                        <select name="veiculos" id="selectMarcas" class="input-xlarge">
-                            <option>selecione</option>
-                            <option>Renault</option>
+                        <select name="idmarca" id="selectMarcas" class="input-xlarge">
+                            <option value="0">selecione</option>
+                            <?php
+                            foreach ($marcas as $marca) {
+                                echo "<option value='{$marca->id}' ".setValueDefault($marca->id, $record->idmarca, 'select').">";
+                                    echo utf8_decode($marca->descricao);
+                                echo "</option>";
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>

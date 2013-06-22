@@ -7,6 +7,9 @@ class Agendamentos extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
+        if(!$this->session->userdata('session_id') || !$this->session->userdata('logado')){
+            redirect(base_url()."home");
+        }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
     }

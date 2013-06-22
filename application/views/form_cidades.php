@@ -1,13 +1,32 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
-    <h2>Cadastrar Cidade</h2>
-    <form class="form-horizontal">
+    <h2><?php echo $breadcrumb;?> Cidade</h2>
+    <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="descricao">Cidade:</label>
-                    <div class="controls"><input type="text" id="descricao" class="input-maxlarge" /></div>
+                    <div class="controls"><input type="text" id="descricao" name="descricao" value="<?php echo utf8_decode($record->descricao)?>" class="input-maxlarge" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="control-group">
+                    <label class="control-label" for="selectEstado">Estado:</label>
+                    <div class="controls">
+                        <select name="idestado" id="selectEstado" class="input-xlarge">
+                            <option value="0">selecione</option>
+                            <?php
+                            foreach ($estados as $estado) {
+                                echo "<option value='{$estado->id}' ".setValueDefault($estado->id, $record->idestado, 'select').">";
+                                    echo utf8_decode($estado->descricao);
+                                echo "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
                 </div>
             </div>
         </div>
@@ -15,7 +34,7 @@
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="observacoes">Observações:</label>
-                    <div class="controls"><textarea rows="8" class="input-maxlarge"></textarea></div>
+                    <div class="controls"><textarea rows="8" class="input-maxlarge"id="comentarios" name="comentarios"><?php echo utf8_decode($record->comentarios)?></textarea></div>
                 </div>
             </div>
         </div>

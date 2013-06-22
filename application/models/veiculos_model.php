@@ -46,7 +46,10 @@ class Veiculos_model extends CI_Model{
     
     public function get_byid($id=NULL){   
         if($id != NULL){
-            $this->db->where('id',$id);
+            $this->db->select('v.*, m.idmarca');
+            $this->db->from('veiculos v');
+            $this->db->join('modelos m','v.idmodelo = m.id','inner');
+            $this->db->where('v.id',$id);
             return $this->db->get($this->table)->row();
         }else{
             return false;

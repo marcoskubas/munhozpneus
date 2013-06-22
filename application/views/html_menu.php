@@ -3,53 +3,43 @@
     <ul class="menu">
         <?php 
         //Agendamento / Orçamento
-        $active = ($pagina == 'agendamentos') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'agendamentos').">";
             echo anchor('agendamentos', 'Agendamento / Orçamento');
         echo "</li>";
         //Clientes
-        $active = ($pagina == 'clientes') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'clientes').">";
             echo anchor('clientes', 'Clientes');
         echo "</li>";
         //Serviços
-        $active = ($pagina == 'servicos') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'servicos').">";
             echo anchor('servicos', 'Serviços');
         echo "</li>";
         //Produtos
-        $active = ($pagina == 'produtos') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'produtos').">";
             echo anchor('produtos', 'Produtos');
         echo "</li>";
         //Veículos
-        $active = ($pagina == 'veiculos') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'veiculos').">";
             echo anchor('veiculos', 'Veículos');
         echo "</li>";
         //Marcas
-        $active = ($pagina == 'marcas') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'marcas').">";
             echo anchor('marcas', 'Marcas');
         echo "</li>";
         //Modelos
-        $active = ($pagina == 'modelos') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'modelos').">";
             echo anchor('modelos', 'Modelos');
         echo "</li>";
         //Combustíveis
-        $active = ($pagina == 'combustiveis') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'combustiveis').">";
             echo anchor('combustiveis', 'Combustíveis');
         echo "</li>";
         //Cidades
-        $active = ($pagina == 'cidades') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'cidades').">";
             echo anchor('cidades', 'Cidades');
         echo "</li>";
         //Usuários
-        $active = ($pagina == 'usuarios') ? "class='active'" : "";
-        echo "<li {$active}>";
+        echo "<li".checkActiveLink($pagina, 'usuarios').">";
             echo anchor('usuarios', 'Usuários');
         echo "</li>";
         ?>

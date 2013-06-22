@@ -1,7 +1,7 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
-    <h2>Cadastrar Serviço</h2>
-    <form class="form-horizontal" action="<?php echo base_url()?>servicos/salvar_alteracao" method="post">
+    <h2><?php echo $breadcrumb?> Serviço</h2>
+    <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
         <div class="row-fluid">
             <div class="span12">

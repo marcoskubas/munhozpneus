@@ -7,6 +7,9 @@ class Usuarios extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
+        if(!$this->session->userdata('session_id') || !$this->session->userdata('logado')){
+            redirect(base_url()."home");
+        }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
     }
@@ -25,8 +28,8 @@ class Usuarios extends CI_Controller{
                             'id' => 'Código',
                             'name' => 'Nome',
                             'email' => 'E-mail',
-                            'enterdate' => 'Data de Registro',
-                            'block' => 'Usuário Ativo'
+                            'phone' => 'Telefone',
+                            'block' => 'Usuário Bloqueado'
                          );
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
@@ -42,6 +45,7 @@ class Usuarios extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Cadastro'
         );
+
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
@@ -67,16 +71,20 @@ class Usuarios extends CI_Controller{
     public function salvar_alteracao(){
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
-        $this->form_validation->set_rules('descricao', 'Descrição', 'required');
+        $this->form_validation->set_rules('name', 'Nome', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{
             foreach ($_POST as $key => $value) {
-                if($key != 'id'){
+                $valor = $this->input->post($key);
+                if($key != 'id' && $key != 'conpassword' && $key != 'pasw'){
                     $data[$key] = utf8_encode($this->input->post($key));
+                }elseif($key == 'pasw' && !empty($valor) ){
+                    $data[$key] = md5( utf8_encode($this->input->post($key)) );
                 }
             }
             if(empty($id)){
+                //$data['enterdate'] = date('Y-m-d H:i:s');
                 $this->usuarios->do_insert($data);
             }else{
                 $this->usuarios->do_update($data, array('id' => $id));

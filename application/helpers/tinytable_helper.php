@@ -1,4 +1,32 @@
 <?php
+/**
+ * Inverte formato original Data
+ * @param Date $originalDate. Formato: YYYY-mm-dd
+ * @return Date $newDate. Formato: dd/mm/YYYY
+ */
+function tinydateFormat($originalDate){
+    $newDate = date("d/m/Y", strtotime($originalDate));
+    return $newDate;
+}
+
+function tinyFormatValue($value){
+    $newValue = $value;
+    $format = explode("-", $value);
+    if(strlen($format[0]) == 4 && count($format) > 1){
+        $newValue = tinydateFormat($newValue);
+    }elseif($newValue == 'Y'){
+        $newValue = 'Sim';
+    }elseif($newValue == 'N'){
+        $newValue = 'Não';
+    }
+    
+    return $newValue;
+}
+/**
+ * Retorna Estrutura Tinytable
+ * @param $records array Object
+ * @param $fields array('nameField'=>'DescricaoField')
+ */
 function tinytable($records, $fields){
     ?>
     <div id="tablewrapper">
@@ -37,7 +65,7 @@ function tinytable($records, $fields){
                         <td align="center"><input type="checkbox" name="row<?=$i?>" id="row<?=$i?>" class="jsform" value="<?=$record->id?>" /></td>
                         <?php
                         foreach ($fields as $key => $value) {
-                            echo "<td>".utf8_decode($record->$key)."</td>";
+                            echo "<td>".  tinyFormatValue( utf8_decode($record->$key) )."</td>";
                           }
                         ?>
                     </tr>

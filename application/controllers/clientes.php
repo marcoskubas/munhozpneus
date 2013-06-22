@@ -7,8 +7,15 @@ class Clientes extends CI_Controller{
     
     public function __construct() {
         parent::__construct();
+        if(!$this->session->userdata('session_id') || !$this->session->userdata('logado')){
+            redirect(base_url()."home");
+        }
+        
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
+        //Model's Auxiliares
+        $this->load->model('estados_model','estados');
+        $this->load->model('cidades_model','cidades');
     }
 
     public function index(){
@@ -43,10 +50,13 @@ class Clientes extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Cadastro'
         );
+        $data['estados'] = $this->estados->get_all();
+        $data['cidades'] = $this->cidades->get_all();
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('form_'.$this->alias);
+        $this->load->view('form_'.$this->alias, $data);
         $this->load->view('html_footer');
     }
     
@@ -57,7 +67,11 @@ class Clientes extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Alteração'
         );
-	$data['record'] = $this->clientes->get_byid($id);
+	
+        $data['record'] = $this->clientes->get_byid($id);
+        $data['estados'] = $this->estados->get_all();
+        $data['cidades'] = $this->cidades->get_all();
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
@@ -73,7 +87,7 @@ class Clientes extends CI_Controller{
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{
             foreach ($_POST as $key => $value) {
-                if($key != 'id'){
+                if($key != 'id' && $key != 'idestado'){
                     $data[$key] = utf8_encode($this->input->post($key));
                 }
             }
