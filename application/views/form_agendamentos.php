@@ -3,22 +3,20 @@
     <h2><?php echo $breadcrumb;?> Agendamento / Orçamento</h2>
     <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
-        <div class="row-fluid">
+         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="nomeCliente">Cliente:</label>
-                    <div class="controls"><input type="text" id="nomeCliente" class="input-maxlarge" /></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="control-group">
-                    <label class="control-label" for="selectVeiculos">Veículo:</label>
+                    <label class="control-label" for="selectClientes">Cliente:</label>
                     <div class="controls">
-                        <select name="veiculos" id="selectVeiculos" class="maxlarge">
-                            <option>selecione</option>
-                            <option>Renault Clio</option>
+                        <select name="idcliente" id="selectClientes" class="input-xlarge">
+                            <option value="0">selecione</option>
+                            <?php
+                            foreach ($clientes as $cliente) {
+                                echo "<option value='{$cliente->id}' ".setValueDefault($cliente->id, $record->idcliente, 'select').">";
+                                    echo utf8_decode($cliente->nome);
+                                echo "</option>";
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
@@ -27,21 +25,68 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
+                    <label class="control-label" for="selectVeiculos">Veículo:</label>
+                    <div class="controls">
+                        <select name="idveiculo" id="selectVeiculos" class="maxlarge">
+                            <option value="0">selecione</option>
+                            <?php
+                            foreach ($veiculos as $veiculo) {
+                                echo "<option value='{$veiculo->id}' ".setValueDefault($veiculo->id, $record->idveiculo, 'select').">";
+                                    echo utf8_decode($veiculo->modelo)." - ".$veiculo->placa;
+                                echo "</option>";
+                            }
+                            ?>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="control-group">
+                    <label class="control-label" for="data">Data:</label>
+                    <div class="controls"><input type="text" id="data_agenda" name="data_agenda" value="<?php echo tinydateFormat($record->data_agenda)?>" class="input-medium" /></div>
+                </div>
+            </div>
+        </div>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="control-group">
+                    <label class="control-label" for="hora">Hora:</label>
+                    <div class="controls"><input type="text" id="hora_agenda" name="hora_agenda" value="<?php echo utf8_decode($record->hora_agenda)?>" class="input-medium" /></div>
+                </div>
+            </div>
+        </div>
+         <?php
+        if( isset($record->id)){
+        ?>
+        <div class="row-fluid">
+            <div class="span12">
+                <div class="control-group">
                     <fieldset name="produtos">
                         <legend>Produtos:</legend>
                         <div class="control-group">
-                            <label class="control-label" for="nomeProduto">Nome do Produto:</label>
-                            <div class="controls"><input type="text" id="nomeProduto" class="input-xlarge" /></div>
+                            <label class="control-label" for="nomeProduto">Produto:</label>
+                            <div class="controls">
+                                <select id="selectProdutos" class="maxlarge">
+                                    <option value="0">selecione</option>
+                                    <?php
+                                    foreach ($produtos as $produto) {
+                                        echo "<option value='{$produto->id}'>".utf8_decode($produto->descricao)."</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="quantidadeProduto">Quantidade:</label>
-                            <div class="controls"><input type="text" id="quantidadeProduto" class="input-xlarge" /></div>
+                            <div class="controls"><input type="text" id="quantidadeProduto" class="input-medium" /></div>
                         </div>
                         <div class="control-group">
-                            <div class="controls"><button type="submit" class="btn btn-primary">Adicionar</button></div>
+                            <div class="controls"><button type="button" class="btn btn-primary" id="btn-addproduct">Adicionar</button></div>
                         </div>
                         <div class="control-group">
-                            <table class="tabela">
+                            <table class="tabela" id="tabela-produtos">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -51,18 +96,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd">
-                                        <td width="5%">1</td>
-                                        <td>Pneus</td>
-                                        <td width="25%">4</td>
-                                        <td width="10%"><a href="#" class="icon-remove" title="Remover"></a></td>
-                                    </tr>
-                                    <tr class="even">
-                                        <td width="5%">1</td>
-                                        <td>Pneus</td>
-                                        <td width="25%">4</td>
-                                        <td width="10%"><a href="#" class="icon-remove" title="Remover"></a></td>
-                                    </tr>
+                                <?php
+                                foreach ($itens_produtos as $item_produto) {
+                                ?>
+                                <tr class="odd">
+                                    <td width="5%" class="id-product"><?php echo $item_produto->id?></td>
+                                    <td><?php echo utf8_decode($item_produto->descricao)?></td>
+                                    <td width="25%"><?php echo $item_produto->quantidade?></td>
+                                    <td width="10%"><a href="javascript:void(0)" class="icon-remove icon-remove-product" title="Remover"></a></td>
+                                </tr>    
+                                <?php
+                                }
+                                ?>    
                                 </tbody>
                             </table>
                         </div>
@@ -77,17 +122,26 @@
                         <legend>Serviços:</legend>
                         <div class="control-group">
                             <label class="control-label" for="nomeServiço">Nome do Serviço:</label>
-                            <div class="controls"><input type="text" id="nomeServiço" class="input-xlarge" /></div>
+                            <div class="controls">
+                                <select id="selectServicos" class="maxlarge">
+                                    <option value="0">selecione</option>
+                                    <?php
+                                    foreach ($servicos as $servico) {
+                                        echo "<option value='{$servico->id}'>".utf8_decode($servico->descricao)."</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                         <div class="control-group">
                             <label class="control-label" for="quantidadeServiço">Quantidade:</label>
-                            <div class="controls"><input type="text" id="quantidadeServiço" class="input-xlarge" /></div>
+                            <div class="controls"><input type="text" id="quantidadeServico" class="input-medium" /></div>
                         </div>
                         <div class="control-group">
-                            <div class="controls"><button type="submit" class="btn btn-primary">Adicionar</button></div>
+                            <div class="controls"><button type="button" class="btn btn-primary" id="btn-addservice">Adicionar</button></div>
                         </div>
                         <div class="control-group">
-                            <table class="tabela">
+                            <table class="tabela" id="tabela-servicos">
                                 <thead>
                                     <tr>
                                         <th></th>
@@ -97,18 +151,18 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr class="odd">
-                                        <td width="5%">1</td>
-                                        <td>Mão de Obra</td>
-                                        <td width="25%">4</td>
-                                        <td width="10%"><a href="#" class="icon-remove" title="Remover"></a></td>
-                                    </tr>
-                                    <tr class="even">
-                                        <td width="5%">1</td>
-                                        <td>Mão de Obra</td>
-                                        <td width="25%">4</td>
-                                        <td width="10%"><a href="#" class="icon-remove" title="Remover"></a></td>
-                                    </tr>
+                                <?php
+                                foreach ($itens_servicos as $item_servico) {
+                                ?>
+                                <tr class="odd">
+                                    <td width="5%" class="id-service"><?php echo $item_servico->id?></td>
+                                    <td><?php echo utf8_decode($item_servico->descricao)?></td>
+                                    <td width="25%"><?php echo $item_servico->quantidade?></td>
+                                    <td width="10%"><a href="javascript:void(0)" class="icon-remove icon-remove-service" title="Remover"></a></td>
+                                </tr>    
+                                <?php
+                                }
+                                ?>     
                                 </tbody>
                             </table>
                         </div>
@@ -116,19 +170,14 @@
                 </div>
             </div>
         </div>
+        <?php
+        }
+        ?>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="data">Data:</label>
-                    <div class="controls"><input type="text" id="data" class="input-medium" /></div>
-                </div>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="control-group">
-                    <label class="control-label" for="hora">Hora:</label>
-                    <div class="controls"><input type="text" id="hora" class="input-medium" /></div>
+                    <label class="control-label" for="observacoes">Observações:</label>
+                    <div class="controls"><textarea rows="8" class="input-maxlarge" id="comentarios" name="comentarios"><?php echo utf8_decode($record->comentarios)?></textarea></div>
                 </div>
             </div>
         </div>

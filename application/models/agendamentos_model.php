@@ -12,8 +12,8 @@ class Agendamentos_model extends CI_Model{
     public function do_insert($dados=NULL){
         if($dados != NULL){
             $this->db->insert($this->table, $dados);
-            $this->session->set_userdata('acaoOk','Cadastro efetuado com sucesso!');
-            redirect(base_url().$this->view);
+            $id = $this->db->insert_id();
+            redirect(base_url().$this->view."/editar/{$id}");
         }
     }
     
@@ -41,6 +41,26 @@ class Agendamentos_model extends CI_Model{
         $this->db->join('veiculos v','a.idveiculo = v.id','inner');
         $this->db->join('modelos m','v.idmodelo = m.id','inner');
         $this->db->order_by('c.nome','ASC');		
+        return $this->db->get()->result();
+    }
+    
+    public function get_itensprodutos($id=NULL){
+        //Criando querys SQL com JOIN pelo uso do Active Record.		
+        $this->db->select('i.id, i.quantidade, p.descricao');
+        $this->db->from('itens_agenda i');
+        $this->db->join('produtos p','i.idproduto = p.id','inner');
+        $this->db->where('i.idagenda',$id);
+        $this->db->order_by('i.id','ASC');		
+        return $this->db->get()->result();
+    }
+    
+    public function get_itensservicos($id=NULL){
+        //Criando querys SQL com JOIN pelo uso do Active Record.		
+        $this->db->select('i.id, i.quantidade, s.descricao');
+        $this->db->from('itens_agenda i');
+        $this->db->join('servicos s','i.idservico = s.id','inner');
+        $this->db->where('i.idagenda',$id);
+        $this->db->order_by('i.id','ASC');
         return $this->db->get()->result();
     }
     

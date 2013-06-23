@@ -45,10 +45,76 @@ var Sistema = {
         $('.btn-back').click(function(){
             Sistema.setBtnBack();
         });
+        //Habilita acão botão Adicionar Produto
+        $('#btn-addproduct').click(function(){
+            Sistema.setAddProduct();
+        });
+        //Habilita exclusão item
+        $('.icon-remove-product').click(function(){
+            var $td = $(this).parent('td');
+            var $tr = $td.parent('tr');
+            var idItem = $tr.find('.id-product').html();
+            Sistema.setDeleteItem(idItem);
+            $tr.fadeOut('slow');
+        });
+        //Habilita acão botão Adicionar Produto
+        $('#btn-addservice').click(function(){
+            Sistema.setAddService();
+        });
+        //Habilita exclusão item
+        $('.icon-remove-service').click(function(){
+            var $td = $(this).parent('td');
+            var $tr = $td.parent('tr');
+            var idItem = $tr.find('.id-service').html();
+            Sistema.setDeleteItem(idItem);
+            $tr.fadeOut('slow');
+        });
     },
     setDefault : function(){
         Sistema.baseUrl     = $('#base-url').val();
         Sistema.pageSelect  = $("#select-page").val();
+    },
+    setAddProduct : function(){
+        var idAgenda    = $('#id').val();
+        var idProduto   = $('#selectProdutos').val();
+        var qtdeProduto = $('#quantidadeProduto').val();
+        var action  = Sistema.baseUrl+'actions/addproduct/'+idAgenda+'/'+idProduto+'/'+qtdeProduto;
+        //Envia requisição e retorna resultado
+        $.ajax({
+            url         : action,
+            type        : 'GET',
+            contentType : 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+            success : function(data){
+                $('#tabela-produtos tbody').fadeIn().append(data);
+            }
+        });
+    },
+    setAddService: function(){
+        var idAgenda    = $('#id').val();
+        var idServico   = $('#selectServicos').val();
+        var qtdeServico = $('#quantidadeServico').val();
+        var action  = Sistema.baseUrl+'actions/addservice/'+idAgenda+'/'+idServico+'/'+qtdeServico;
+        //Envia requisição e retorna resultado
+        $.ajax({
+            url         : action,
+            type        : 'GET',
+            contentType : 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+            success : function(data){
+                $('#tabela-servicos tbody').fadeIn().append(data);
+            }
+        });
+    },
+    setDeleteItem : function(idItem){
+        var action  = Sistema.baseUrl+'actions/deleteitem/'+idItem;
+        //Envia requisição e retorna resultado
+        $.ajax({
+            url         : action,
+            type        : 'GET',
+            contentType : 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+            success : function(data){
+                
+            }
+        });
     },
     setBtnNew : function(){
         location.href = Sistema.baseUrl+Sistema.pageSelect+'/cadastro';

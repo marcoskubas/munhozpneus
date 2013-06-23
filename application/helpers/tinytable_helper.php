@@ -5,7 +5,15 @@
  * @return Date $newDate. Formato: dd/mm/YYYY
  */
 function tinydateFormat($originalDate){
-    $newDate = date("d/m/Y", strtotime($originalDate));
+    $newDate = "";
+    if(!empty($originalDate)){
+        $data = explode("/", $originalDate);
+        if(count($data) > 1){
+            $newDate = "{$data[2]}-{$data[1]}-{$data[0]}";
+        }else{
+            $newDate = date("d/m/Y", strtotime($originalDate));    
+        }
+    }
     return $newDate;
 }
 

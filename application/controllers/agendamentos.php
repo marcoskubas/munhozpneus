@@ -12,6 +12,11 @@ class Agendamentos extends CI_Controller{
         }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
+        //Model's Auxiliares
+        $this->load->model('clientes_model','clientes');
+        $this->load->model('veiculos_model','veiculos');
+        $this->load->model('produtos_model','produtos');
+        $this->load->model('servicos_model','servicos');
     }
 
     public function index(){
@@ -46,10 +51,13 @@ class Agendamentos extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Cadastro'
         );
+        //Dados Form
+        $data['clientes']   = $this->clientes->get_all();
+        $data['veiculos']   = $this->veiculos->get_all();
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
-        $this->load->view('form_'.$this->alias);
+        $this->load->view('form_'.$this->alias, $data);
         $this->load->view('html_footer');
     }
     
@@ -60,7 +68,17 @@ class Agendamentos extends CI_Controller{
             'title' => $this->title,
             'breadcrumb' => 'Alteração'
         );
-	$data['record'] = $this->agendamentos->get_byid($id);
+	
+        //Dados Form
+        $data['record']     = $this->agendamentos->get_byid($id);
+        $data['itens_produtos'] = $this->agendamentos->get_itensprodutos($id);
+        $data['itens_servicos'] = $this->agendamentos->get_itensservicos($id);
+        
+        $data['clientes']   = $this->clientes->get_all();
+        $data['veiculos']   = $this->veiculos->get_all();
+        $data['produtos']   = $this->produtos->get_all();
+        $data['servicos']   = $this->servicos->get_all();
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
@@ -71,15 +89,18 @@ class Agendamentos extends CI_Controller{
     public function salvar_alteracao(){
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
-        $this->form_validation->set_rules('descricao', 'Descrição', 'required');
+        $this->form_validation->set_rules('idcliente', 'Cliente', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{
             foreach ($_POST as $key => $value) {
-                if($key != 'id'){
+                if($key != 'id' && $key != 'data_agenda'){
                     $data[$key] = utf8_encode($this->input->post($key));
+                }elseif($key == 'data_agenda'){
+                    $data[$key] = tinydateFormat($this->input->post($key));
                 }
             }
+            
             if(empty($id)){
                 $this->agendamentos->do_insert($data);
             }else{
