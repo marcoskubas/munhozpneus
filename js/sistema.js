@@ -147,8 +147,16 @@ var Sistema = {
             Sistema.setMessage('Nenhum registro selecionado!', 'aviso');
         }else if(countCheck == 1){
             var id = $('.checker[id^=uniform-row] .checked').find('input').val();
-            var conteudo = id;
-            Sistema.openDialogView(conteudo);
+            var action  = Sistema.baseUrl+Sistema.pageSelect+'/preview/'+id;
+            //Envia requisição e retorna resultado
+            $.ajax({
+                url         : action,
+                type        : 'GET',
+                contentType : 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+                success : function(data){
+                    Sistema.openDialogView(data);
+                }
+            });
         }else{
             Sistema.setMessage('Mais de um registro selecionado, selecione apenas um registro!', 'aviso');
         }

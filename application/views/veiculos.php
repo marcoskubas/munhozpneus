@@ -4,13 +4,18 @@ $acoes = checkActionMessage($this->session->userdata('acaoOk'));
 $acaoMessage = $acoes['acaoMessage'];
 $classMessage = $acoes['classMessage'];
 $this->session->set_userdata('acaoOk','');
+$config_buttons = array(
+    'pagina' => $pagina,
+    'modules_views' => $modules_views,
+    'modules_print' => $modules_print
+);
 ?>
 <!-- Content -->
 <div id="content" class="container-fluid">
     <h2>Veículos</h2>
     <div class="mensagem <?php echo $classMessage?>"><?php echo $acaoMessage?></div>
     <div class="actions fRight">
-        <?php $this->load->view('html_buttons');?>
+        <?php $this->load->view('html_buttons', $config_buttons);?>
     </div>
     <?php 
     tinytable($records, $fields);

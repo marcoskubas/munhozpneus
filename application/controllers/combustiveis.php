@@ -29,6 +29,12 @@ class Combustiveis extends CI_Controller{
                             'descricao' => 'Descrição',
                             'comentarios' => 'Observações'
                          );
+        //LOAD CONFIG
+        $this->load->config('myconfig');
+        $data['modules_views'] = $this->config->item('modules_views');
+        $data['modules_print'] = $this->config->item('modules_print');
+        $data['pagina'] = $this->alias;
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
@@ -89,5 +95,18 @@ class Combustiveis extends CI_Controller{
         if($id > 0){
             $this->combustiveis->do_delete(array('id' => $id));
         }
+    }
+    
+    public function preview($id){
+        //Configuração Preview Registros
+        $data['fields'] = array(
+                            'id' => 'Código',
+                            'descricao' => 'Descrição',
+                            'valor' => 'Valor Unitário',
+                            'comentarios' => 'Observações'
+                         );
+        $data['title'] = $this->title;
+	$data['record'] = $this->combustiveis->get_byid($id);
+        $this->load->view('ajax/previews', $data);
     }
 }

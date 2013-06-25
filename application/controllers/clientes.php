@@ -36,6 +36,12 @@ class Clientes extends CI_Controller{
                             'celular' => 'Celular',
                             'email' => 'E-mail'
                          );
+        //LOAD CONFIG
+        $this->load->config('myconfig');
+        $data['modules_views'] = $this->config->item('modules_views');
+        $data['modules_print'] = $this->config->item('modules_print');
+        $data['pagina'] = $this->alias;
+        
         $this->load->view('html_head');
         $this->load->view('html_header', $page);
         $this->load->view('html_menu', $page);
@@ -103,5 +109,18 @@ class Clientes extends CI_Controller{
         if($id > 0){
             $this->clientes->do_delete(array('id' => $id));
         }
+    }
+    
+    public function preview($id){
+        //Configuração Preview Registros
+        $data['fields'] = array(
+                            'id' => 'Código',
+                            'descricao' => 'Descrição',
+                            'valor' => 'Valor Unitário',
+                            'comentarios' => 'Observações'
+                         );
+        $data['title'] = $this->title;
+	$data['record'] = $this->clientes->get_byid($id);
+        $this->load->view('ajax/previews', $data);
     }
 }

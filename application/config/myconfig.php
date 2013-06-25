@@ -1,0 +1,22 @@
+<?php
+/*
+|--------------------------------------------------------------------------
+| Modules Views
+|--------------------------------------------------------------------------
+|
+| Indica quais listagens necessitam do botão Visualizar para exibir
+| dados adicionais a listagem.
+|
+*/
+$config['modules_views']    =   array('','agendamentos','veiculos','clientes','usuarios','servicos','produtos');
+
+/*
+|--------------------------------------------------------------------------
+| Modules Print
+|--------------------------------------------------------------------------
+|
+| Indica quais listagens necessitam do botão Imprimir para exibição
+| relatórios personalizados
+|
+*/
+$config['modules_print']    =   array('','agendamentos','veiculos','clientes','usuarios');
