@@ -41,6 +41,10 @@ var Sistema = {
         $('.btn-print').click(function(){
             Sistema.setBtnPrint();
         });
+        //Habilita ação botão Imprimir Relatório atual
+        $('.btn-print-refresh').click(function(){
+            Sistema.setPrintRefresh();
+        });
         //Habilita ação botão Voltar
         $('.btn-back').click(function(){
             Sistema.setBtnBack();
@@ -162,7 +166,22 @@ var Sistema = {
         }
     },
     setBtnPrint : function(){
-        Sistema.setMessage('Funcionalidade "Imprimir" não implementada!', 'aviso');
+        var countCheck = $('.checker[id^=uniform-row] .checked').length;
+        if(countCheck == 0){
+            Sistema.setMessage('Nenhum registro selecionado!', 'aviso');
+        }else if(countCheck == 1){
+            var id = $('.checker[id^=uniform-row] .checked').find('input').val();
+            var action  = Sistema.baseUrl+'impressao/'+Sistema.pageSelect+'/'+id;
+            Sistema.setRedirect(action);
+        }else{
+            Sistema.setMessage('Mais de um registro selecionado, selecione apenas um registro!', 'aviso');
+        }
+    },
+    setPrintRefresh : function(){
+        window.print();
+    },
+    setRedirect : function(url_action){
+        location.href = url_action;
     },
     setBtnBack : function(){
         location.href = Sistema.baseUrl+Sistema.pageSelect;

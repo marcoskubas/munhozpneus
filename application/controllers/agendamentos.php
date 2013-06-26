@@ -127,12 +127,17 @@ class Agendamentos extends CI_Controller{
         //Configuração Preview Registros
         $data['fields'] = array(
                             'id' => 'Código',
-                            'descricao' => 'Descrição',
-                            'valor' => 'Valor Unitário',
+                            'cliente' => 'Cliente',
+                            'veiculo' => 'Veículo',
+                            'data_agenda' => 'Data',
+                            'hora_agenda' => 'Hora',
                             'comentarios' => 'Observações'
                          );
         $data['title'] = $this->title;
 	$data['record'] = $this->agendamentos->get_byid($id);
+        /*
+         * TRAZER ITENS PRODUTOS / SERVIÇOS TAMBÉM
+         */
         $this->load->view('ajax/previews', $data);
     }
 }

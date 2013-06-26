@@ -41,7 +41,7 @@ class Clientes_model extends CI_Model{
     
     public function get_byid($id=NULL){   
         if($id != NULL){
-            $this->db->select('cl.id, cl.nome, cl.numero, cl.cpf, cl.complemento, cl.bairro, cl.endereco, cl.celular, cl.telefone, cl.email, cl.idcidade, ci.idestado');
+            $this->db->select('cl.id, cl.nome, cl.numero, cl.cpf, cl.complemento, cl.bairro, cl.endereco, cl.celular, cl.telefone, cl.email, cl.idcidade, ci.idestado, ci.descricao cidade');
             $this->db->from('clientes cl');
             $this->db->join('cidades ci','cl.idcidade = ci.id','inner');
             $this->db->where('cl.id',$id);

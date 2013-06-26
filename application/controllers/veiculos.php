@@ -120,11 +120,16 @@ class Veiculos extends CI_Controller{
     public function preview($id){
         //Configuração Preview Registros
         $data['fields'] = array(
-                            'id' => 'Código',
-                            'descricao' => 'Descrição',
-                            'valor' => 'Valor Unitário',
-                            'comentarios' => 'Observações'
-                         );
+            'id' => 'Código',
+            'cliente' => 'Cliente',
+            'modelo' => 'Modelo',
+            'combustivel' => 'Combustível',
+            'cor' => 'Cor',
+            'placa' => 'Placa',
+            'ano' => 'Ano',
+            'motor' => 'Motor',
+            'comentarios' => 'Observações'
+        );
         $data['title'] = $this->title;
 	$data['record'] = $this->veiculos->get_byid($id);
         $this->load->view('ajax/previews', $data);

@@ -152,7 +152,38 @@ header .navigation {
 }
 
 .actions { padding: 10px 0; }
+.actions-impressao { padding: 10px 0; margin-top: -50px; }
 .infoForm { 
     font-size: 11px;
     padding: 0 5px;
 }
+ /* CSS PRINT EXIBIÇÃO */
+ #div-print{
+     margin-top: 25px;
+ }
+ .rel-impressao{
+     width: 900px;
+     border: 1px solid #999999;
+ }
+ .rel-impressao .table th, .table td{
+     border-color: #999999;
+ }
+ .rel-impressao .table th p, .table td p, td div p{
+     margin: 0px;
+ }
+ .rel-impressao .left-header{
+     text-align: left;
+     padding: 25px;
+ }
+ .rel-impressao .right-header{
+     text-align: right;
+     padding: 25px;
+ }
+ .rel-impressao .row-center{
+     text-align: center;
+ }
+ .lead{
+     font-size: 17px;
+     margin-bottom: 0px;
+ }
+ .clear { clear: both; }

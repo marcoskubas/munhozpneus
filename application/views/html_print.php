@@ -21,18 +21,14 @@
         echo link_tag('css/tabela.css')."\n";
         echo link_tag('css/tinytable.css')."\n";
         echo link_tag('css/uniform.css')."\n";
-        echo link_tag('css/jquery-ui-1.10.3.custom.css')."\n";
+        echo link_tag('css/jquery-ui-dark-hive.css')."\n";
         ?>
-        <link href="<?php echo base_url()?>css/print.css" media="print" type="text/css" rel="stylesheet" />
+        <link href="<?php echo base_url()?>css/print.css" type="text/css" rel="stylesheet" />
         <script src="<?php echo base_url()?>js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <!-- jQuery -->
         <script src="<?php echo base_url()?>js/jquery-1.10.1.min.js"></script>
         <!-- jQuery UI-->
         <script src="<?php echo base_url()?>js/jquery-ui-1.10.3.min.js"></script>
-        <!-- TinyTable -->
-        <script src="<?php echo base_url()?>js/tinytable.js"></script>
-        <!-- Uniform -->
-        <script src="<?php echo base_url()?>js/uniform.js"></script>
         <!-- Objeto Sistema -->
         <script src="<?php echo base_url()?>js/sistema.js"></script>
     </head>

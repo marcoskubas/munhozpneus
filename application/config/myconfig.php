@@ -8,7 +8,7 @@
 | dados adicionais a listagem.
 |
 */
-$config['modules_views']    =   array('','agendamentos','veiculos','clientes','usuarios','servicos','produtos');
+$config['modules_views']    =   array('','agendamentos','veiculos','clientes','servicos','produtos');
 
 /*
 |--------------------------------------------------------------------------
@@ -19,4 +19,4 @@ $config['modules_views']    =   array('','agendamentos','veiculos','clientes','u
 | relatórios personalizados
 |
 */
-$config['modules_print']    =   array('','agendamentos','veiculos','clientes','usuarios');
+$config['modules_print']    =   array('','agendamentos','veiculos','clientes');

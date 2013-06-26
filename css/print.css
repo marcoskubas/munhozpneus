@@ -1,0 +1,16 @@
+/* 
+    Document   : print
+    Created on : 25/06/2013, 13:06:10
+    Author     : marcos
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#content{
+    margin-left: 0px;
+}
+#div-print{
+    margin-top: 0px;
+}
+.navbar.navbar-inverse, .header-print, .navbar-inner.navigation, ul.menu, ul.topMenu{
+    display: none;
+}

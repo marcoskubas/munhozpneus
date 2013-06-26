@@ -114,11 +114,18 @@ class Clientes extends CI_Controller{
     public function preview($id){
         //Configuração Preview Registros
         $data['fields'] = array(
-                            'id' => 'Código',
-                            'descricao' => 'Descrição',
-                            'valor' => 'Valor Unitário',
-                            'comentarios' => 'Observações'
-                         );
+            'id' => 'Código',
+            'nome' => 'Nome',
+            'telefone' => 'Telefone',
+            'celular' => 'Celular',
+            'email' => 'E-Mail',
+            'cpf' => 'CPF',
+            'endereco' => 'Endereço',
+            'numero' => 'Número',
+            'complemento' => 'Complemento',
+            'bairro' => 'Bairro',
+            'cidade' => 'Cidade'
+        );
         $data['title'] = $this->title;
 	$data['record'] = $this->clientes->get_byid($id);
         $this->load->view('ajax/previews', $data);
