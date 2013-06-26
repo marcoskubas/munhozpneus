@@ -1,4 +1,51 @@
 <?php
+function NumberFormat($valor, $decimal = 2, $view = 0) {
+    if ( $view == 0 ) {
+        $number = number_format($valor, $decimal, ',', '.');
+    }
+    elseif ( $view == 1 ) {
+        $check = explode(",", $valor);
+
+        if ( count($check) > 1 ) {
+            $number = str_replace(".", "", $valor);
+            $number = str_replace(",", ".", $number);
+        }
+        else {
+            $number = $valor;
+        }
+    }
+    elseif ( $view == 2 ) {
+        $number = str_replace(".", "", $valor);
+    }
+    elseif ( $view == 3 ) {
+        $ext = explode(",", $valor);
+        if ( count($ext) > 1 ) {
+            if ( $ext[0] > 0 ) {
+                $number = $ext[0] . "," . rtrim($ext[1], "0");
+                if ( strlen($number) == 2 ) {
+                    $number = substr($number, 0, -1);
+                }
+            }
+            else {
+                $number = $valor;
+            }
+        }
+        else {
+            $number = $valor;
+        }
+    }
+
+    return $number;
+}
+    
+function number_complete($number){
+    $result = 1000+$number;
+    $divisao = $number / 1000;
+    if($divisao > 1){
+        $result += 1000;
+    }
+    return $result;
+}
 /**
  * Verifica link classe ativa
  * @param String $pagina Página atual

@@ -24,7 +24,7 @@
         </tr>    
         <tr>
             <td colspan="2" class="row-center">
-                <p><strong>ORÇAMENTO N.º <?php echo (1000+$record->id)?></strong></p>
+                <p><strong>ORÇAMENTO N.º <?php echo number_complete($record->id)?></strong></p>
             </td>
         </tr>
         <tr>
@@ -32,35 +32,35 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="span2"><p><strong>Cliente: </strong></p> </div>
-                        <div class="span10"><p><?php echo $cliente->nome?></p></div>
+                        <div class="span10"><p><?php echo utf8_decode($cliente->nome)?></p></div>
                     </div>    
                 </div>
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="span2"><p><strong>CPF: </strong></p> </div>
-                        <div class="span2"><p>012.320.323-87</p></div>
+                        <div class="span2"><p><?php echo $cliente->cpf?></p></div>
                         <div class="span2"><p><strong>Endereço: </strong></p> </div>
-                        <div class="span2"><p>Rua Ceará, 190</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($cliente->endereco)?></p></div>
                         <div class="span2"><p><strong>Complemento: </strong></p> </div>
-                        <div class="span2"><p>Casa</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($cliente->complemento)?></p></div>
                     </div>    
                 </div>
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="span2"><p><strong>Bairo: </strong></p> </div>
-                        <div class="span2"><p>Cel. Nassuca</p></div>
+                        <div class="span2"><p><?php echo $cliente->bairro?></p></div>
                         <div class="span2"><p><strong>Cidade: </strong></p> </div>
-                        <div class="span2"><p>Guaíba</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($cliente->cidade)?></p></div>
                         <div class="span2"><p><strong>UF: </strong></p> </div>
-                        <div class="span2"><p>RS</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($cliente->estado)?></p></div>
                     </div>    
                 </div>
                 <div class="row-fluid">
                     <div class="span12">
-                        <div class="span2"><p><strong>CEP: </strong></p> </div>
-                        <div class="span2"><p>92500-000</p></div>
                         <div class="span2"><p><strong>Telefone: </strong></p> </div>
-                        <div class="span6"><p>(51) 3491.1364</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($cliente->telefone)?></p></div>
+                        <div class="span2"><p><strong>Celular: </strong></p> </div>
+                        <div class="span6"><p><?php echo utf8_decode($cliente->celular)?></p></div>
                     </div>    
                 </div>
             </td>
@@ -70,13 +70,13 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="span1"><p><strong>Veículo: </strong></p> </div>
-                        <div class="span2"><p>Cel. Nassuca</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($veiculo->marca)?> <?php echo utf8_decode($veiculo->modelo)?></p></div>
                         <div class="span1"><p><strong>Cor: </strong></p> </div>
-                        <div class="span2"><p>Guaíba</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($veiculo->cor)?></p></div>
                         <div class="span1"><p><strong>Ano: </strong></p> </div>
-                        <div class="span2"><p>RS</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($veiculo->ano)?></p></div>
                         <div class="span1"><p><strong>Placa: </strong></p> </div>
-                        <div class="span2"><p>RS</p></div>
+                        <div class="span2"><p><?php echo utf8_decode($veiculo->placa)?></p></div>
                     </div>    
                 </div>
             </td>
@@ -90,18 +90,19 @@
             <td><p><strong>R$ UNIT.</strong></p></td>
             <td><p><strong>R$ VALOR</strong></p></td>
         </tr>    
+        <?php 
+        $total_produtos = 0;
+        foreach ($itens_produtos as $produto) { 
+            $valor_total = $produto->quantidade * $produto->valor;
+            $total_produtos += $valor_total;
+        ?>
         <tr>
-            <td><p>2</p></td>
-            <td><p>DISCO DE FREIO DO CLIO</p></td>
-            <td><p>62,00</p></td>
-            <td><p>124,00</p></td>
+            <td><p><?php echo $produto->quantidade?></p></td>
+            <td><p><?php echo utf8_decode($produto->descricao)?></p></td>
+            <td><p><?php echo NumberFormat($produto->valor)?></p></td>
+            <td><p><?php echo NumberFormat($valor_total)?></p></td>
         </tr>    
-        <tr>
-            <td><p>1</p></td>
-            <td><p>PASTILHA DE FREIO CLIO</p></td>
-            <td><p>45,00</p></td>
-            <td><p>45,00</p></td>
-        </tr>    
+        <?php }?>
         </table>
         
         <table class="rel-impressao table">
@@ -111,12 +112,19 @@
             <td><p><strong>R$ UNIT.</strong></p></td>
             <td><p><strong>R$ VALOR</strong></p></td>
         </tr>    
+        <?php 
+        $total_servicos = 0;
+        foreach ($itens_servicos as $servico) { 
+            $valor_total = $servico->quantidade * $servico->valor;
+            $total_servicos += $valor_total;
+        ?>
         <tr>
-            <td><p>1</p></td>
-            <td><p>MÃO-DE-OBRA SUSPENSÃO</p></td>
-            <td><p>45,00</p></td>
-            <td><p>45,00</p></td>
+            <td><p><?php echo $servico->quantidade?></p></td>
+            <td><p><?php echo utf8_decode($servico->descricao)?></p></td>
+            <td><p><?php echo NumberFormat($servico->valor)?></p></td>
+            <td><p><?php echo NumberFormat($valor_total)?></p></td>
         </tr>    
+        <?php }?>
         </table>
         
         <table class="rel-impressao table">
@@ -127,7 +135,7 @@
                         <div class="span2"><p><strong>Data do Orçamento: </strong></p> </div>
                         <div class="span4"><p><?php echo date('d/m/Y H:i')?></p></div>
                         <div class="span1"><p><strong>Material: </strong></p> </div>
-                        <div class="span5"><p>169,00</p></div>
+                        <div class="span5"><p><?php echo NumberFormat($total_produtos)?></p></div>
                     </div>    
                 </div>
                 <div class="row-fluid">
@@ -135,7 +143,7 @@
                         <div class="span2"></div>
                         <div class="span4"></div>
                         <div class="span1"><p><strong>Serviços: </strong></p> </div>
-                        <div class="span5"><p>45,00</p></div>
+                        <div class="span5"><p><?php echo NumberFormat($total_servicos)?></p></div>
                     </div>    
                 </div>
                 <div class="row-fluid">
@@ -143,7 +151,7 @@
                         <div class="span2"></div>
                         <div class="span4"></div>
                         <div class="span1"><p><strong>TOTAL: </strong></p> </div>
-                        <div class="span5"><p><strong>214,00</strong></p></div>
+                        <div class="span5"><p><?php echo NumberFormat($total_servicos+$total_produtos)?></p></div>
                     </div>    
                 </div>
             </td>
@@ -152,8 +160,3 @@
     </div>
 </div>
 <!-- /Content -->
-<script>
-    window.onload = function() {
-        //Sistema.setPrintRefresh();
-    };
-</script>

@@ -46,10 +46,11 @@ class Veiculos_model extends CI_Model{
     
     public function get_byid($id=NULL){   
         if($id != NULL){
-            $this->db->select('v.*, m.idmarca, c.nome cliente, m.descricao modelo, g.descricao combustivel');
+            $this->db->select('v.*, m.idmarca, c.nome cliente, m.descricao modelo, g.descricao combustivel, ma.descricao marca');
             $this->db->from('veiculos v');
             $this->db->join('clientes c','v.idcliente = c.id','inner');
             $this->db->join('modelos m','v.idmodelo = m.id','inner');
+            $this->db->join('marcas ma','m.idmarca = ma.id','inner');
             $this->db->join('combustiveis g','v.idcombustivel = g.id','inner');
             $this->db->where('v.id',$id);
             return $this->db->get($this->table)->row();

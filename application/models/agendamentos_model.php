@@ -46,7 +46,7 @@ class Agendamentos_model extends CI_Model{
     
     public function get_itensprodutos($id=NULL){
         //Criando querys SQL com JOIN pelo uso do Active Record.		
-        $this->db->select('i.id, i.quantidade, p.descricao');
+        $this->db->select('i.id, i.quantidade, p.descricao, p.valor');
         $this->db->from('itens_agenda i');
         $this->db->join('produtos p','i.idproduto = p.id','inner');
         $this->db->where('i.idagenda',$id);
@@ -56,7 +56,7 @@ class Agendamentos_model extends CI_Model{
     
     public function get_itensservicos($id=NULL){
         //Criando querys SQL com JOIN pelo uso do Active Record.		
-        $this->db->select('i.id, i.quantidade, s.descricao');
+        $this->db->select('i.id, i.quantidade, s.descricao, s.valor');
         $this->db->from('itens_agenda i');
         $this->db->join('servicos s','i.idservico = s.id','inner');
         $this->db->where('i.idagenda',$id);
@@ -66,7 +66,7 @@ class Agendamentos_model extends CI_Model{
     
     public function get_byid($id=NULL){   
         if($id != NULL){
-            $this->db->select('a.id, a.idcliente, c.nome AS cliente, CONCAT(m.descricao," ",placa) AS veiculo, a.data_agenda, a.hora_agenda', FALSE);
+            $this->db->select('a.id, a.idcliente, a.idveiculo, c.nome AS cliente, CONCAT(m.descricao," ",placa) AS veiculo, a.data_agenda, a.hora_agenda', FALSE);
             $this->db->from('agendas a');
             $this->db->join('clientes c','a.idcliente = c.id','inner');
             $this->db->join('veiculos v','a.idveiculo = v.id','inner');
