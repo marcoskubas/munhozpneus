@@ -1,4 +1,4 @@
-<h4><?php echo utf8_encode($title)?></h4>
+<h3><?php echo utf8_encode($title)?></h3>
 <?php foreach ($fields as $key => $field) { ?>
 <div class="span12">
     <div class="span4"><?php echo utf8_encode($field)?>: </div>
