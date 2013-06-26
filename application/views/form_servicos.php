@@ -9,7 +9,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="descricao">Serviço:</label>
+                    <label class="control-label" for="descricao">Serviço * :</label>
                     <div class="controls"><input type="text" name="descricao" id="descricao" class="input-maxlarge" value="<?php echo utf8_decode($record->descricao)?>" /></div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="valor">Valor Unitário:</label>
+                    <label class="control-label" for="valor">Valor Unitário * :</label>
                     <div class="controls"><input type="text" name="valor" id="valor" class="input-medium" value="<?php echo $record->valor?>" /><span class="infoForm">(Ex.: R$ 5,00)</span></div>
                 </div>
             </div>

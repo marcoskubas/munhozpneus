@@ -9,7 +9,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="nome">Nome:</label>
+                    <label class="control-label" for="nome">Nome * :</label>
                     <div class="controls"><input type="text" id="name" name="name" value="<?php echo utf8_decode($record->name)?>" class="input-xxlarge" /></div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="email">E-mail:</label>
+                    <label class="control-label" for="email">E-mail * :</label>
                     <div class="controls"><input type="text" id="email" name="email" value="<?php echo utf8_decode($record->email)?>" class="input-xxlarge" /></div>
                 </div>
             </div>

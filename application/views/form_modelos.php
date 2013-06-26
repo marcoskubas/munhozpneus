@@ -9,7 +9,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="descricao">Modelo:</label>
+                    <label class="control-label" for="descricao">Modelo * :</label>
                     <div class="controls"><input type="text" id="descricao" name="descricao" value="<?php echo utf8_decode($record->descricao)?>" class="input-maxlarge" /></div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectMarcas">Marca:</label>
+                    <label class="control-label" for="selectMarcas">Marca * :</label>
                     <div class="controls">
                         <select name="idmarca" id="selectMarcas" class="input-xlarge">
                             <option value="">selecione</option>

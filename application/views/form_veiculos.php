@@ -9,7 +9,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectClientes">Cliente:</label>
+                    <label class="control-label" for="selectClientes">Cliente * :</label>
                     <div class="controls">
                         <select name="idcliente" id="selectClientes" class="input-xlarge">
                             <option value="">selecione</option>
@@ -28,7 +28,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectMarcas">Marca:</label>
+                    <label class="control-label" for="selectMarcas">Marca * :</label>
                     <div class="controls">
                         <select name="idmarca" id="selectMarcas" class="input-xlarge">
                             <option value="">selecione</option>
@@ -47,7 +47,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectModelos">Modelo:</label>
+                    <label class="control-label" for="selectModelos">Modelo * :</label>
                     <div class="controls">
                         <select name="idmodelo" id="selectModelos" class="input-xlarge">
                             <option value="">selecione</option>
@@ -66,7 +66,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectCombustivel">Combustível:</label>
+                    <label class="control-label" for="selectCombustivel">Combustível * :</label>
                     <div class="controls">
                         <select name="idcombustivel" id="selectCombustivel" class="input-xlarge">
                             <option value="">selecione</option>

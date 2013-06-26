@@ -9,7 +9,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="nome">Nome:</label>
+                    <label class="control-label" for="nome">Nome * :</label>
                     <div class="controls"><input type="text" id="nome" name="nome" value="<?php echo utf8_decode($record->nome)?>" class="input-xxlarge" /></div>
                 </div>
             </div>
@@ -17,7 +17,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="cpf">CPF:</label>
+                    <label class="control-label" for="cpf">CPF * :</label>
                     <div class="controls"><input type="text" id="cpf" name="cpf" value="<?php echo utf8_decode($record->cpf)?>" class="input-xxlarge" /></div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="email">E-mail:</label>
+                    <label class="control-label" for="email">E-mail * :</label>
                     <div class="controls"><input type="text" id="email" name="email" value="<?php echo utf8_decode($record->email)?>" class="input-xxlarge" /></div>
                 </div>
             </div>
@@ -65,7 +65,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectEstado">Estado:</label>
+                    <label class="control-label" for="selectEstado">Estado * :</label>
                     <div class="controls">
                         <select name="idestado" id="selectEstado" class="input-xlarge">
                             <option value="">selecione</option>
@@ -84,7 +84,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectCidades">Cidade:</label>
+                    <label class="control-label" for="selectCidades">Cidade * :</label>
                     <div class="controls">
                         <select name="idcidade" id="selectCidades" class="input-xlarge">
                             <option value="">selecione</option>
@@ -103,7 +103,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="residencial">Telefone Residencial:</label>
+                    <label class="control-label" for="residencial">Telefone Residencial * :</label>
                     <div class="controls"><input type="text" id="telefone" name="telefone" value="<?php echo utf8_decode($record->telefone)?>" class="input-medium" /></div>
                 </div>
             </div>

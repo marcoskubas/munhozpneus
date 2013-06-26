@@ -9,7 +9,7 @@
          <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectClientes">Cliente:</label>
+                    <label class="control-label" for="selectClientes">Cliente * :</label>
                     <div class="controls">
                         <select name="idcliente" id="selectClientes" class="input-xlarge">
                             <option value="">selecione</option>
@@ -28,7 +28,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="selectVeiculos">Veículo:</label>
+                    <label class="control-label" for="selectVeiculos">Veículo * :</label>
                     <div class="controls">
                         <select name="idveiculo" id="selectVeiculos" class="maxlarge">
                             <option value="">selecione</option>
@@ -47,7 +47,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="data">Data:</label>
+                    <label class="control-label" for="data">Data * :</label>
                     <div class="controls"><input type="text" id="data_agenda" name="data_agenda" value="<?php echo tinydateFormat($record->data_agenda)?>" class="input-medium" /></div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="hora">Hora:</label>
+                    <label class="control-label" for="hora">Hora * :</label>
                     <div class="controls"><input type="text" id="hora_agenda" name="hora_agenda" value="<?php echo utf8_decode($record->hora_agenda)?>" class="input-medium" /></div>
                 </div>
             </div>
