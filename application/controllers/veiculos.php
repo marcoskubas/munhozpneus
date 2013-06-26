@@ -17,6 +17,10 @@ class Veiculos extends CI_Controller{
         $this->load->model('marcas_model','marcas');
         $this->load->model('modelos_model','modelos');
         $this->load->model('combustiveis_model','combustiveis');
+        
+        //Library
+        $this->load->library('form_validation');
+        $this->load->library('my_form_validation');
     }
 
     public function index(){
@@ -94,6 +98,9 @@ class Veiculos extends CI_Controller{
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
         $this->form_validation->set_rules('idcliente', 'Cliente', 'required');
+        $this->form_validation->set_rules('idmarca', 'Marca', 'required');
+        $this->form_validation->set_rules('idmodelo', 'Modelo', 'required');
+        $this->form_validation->set_rules('idcombustivel', 'Combustível', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{

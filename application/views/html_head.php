@@ -33,6 +33,8 @@
         <script src="<?php echo base_url()?>js/tinytable.js"></script>
         <!-- Uniform -->
         <script src="<?php echo base_url()?>js/uniform.js"></script>
+        <!-- Validate -->
+        <script src="<?php echo base_url()?>js/jquery.validate.js"></script>
         <!-- Objeto Sistema -->
         <script src="<?php echo base_url()?>js/sistema.js"></script>
     </head>

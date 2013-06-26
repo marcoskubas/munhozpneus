@@ -14,6 +14,10 @@ class Cidades extends CI_Controller{
         $this->load->model($this->alias.'_model',$this->alias);
         //Model's Auxiliares
         $this->load->model('estados_model','estados');
+        
+        //Library
+        $this->load->library('form_validation');
+        $this->load->library('my_form_validation');
     }
 
     public function index(){
@@ -80,7 +84,8 @@ class Cidades extends CI_Controller{
     public function salvar_alteracao(){
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
-        $this->form_validation->set_rules('descricao', 'Descrição', 'required');
+        $this->form_validation->set_rules('descricao', 'Cidade', 'required');
+        $this->form_validation->set_rules('idestado', 'Estado', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{

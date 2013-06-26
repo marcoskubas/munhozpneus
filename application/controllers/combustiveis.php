@@ -12,6 +12,10 @@ class Combustiveis extends CI_Controller{
         }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
+        
+        //Library
+        $this->load->library('form_validation');
+        $this->load->library('my_form_validation');
     }
 
     public function index(){

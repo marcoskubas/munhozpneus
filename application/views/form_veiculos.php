@@ -3,13 +3,16 @@
     <h2><?php echo $breadcrumb;?> Veículo</h2>
     <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
+        <div class="errorHandler">
+            <?php echo $this->form_validation->error_string('- ', '<br />', '<div class="alert alert-error">', '</div>'); ?>
+        </div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
                     <label class="control-label" for="selectClientes">Cliente:</label>
                     <div class="controls">
                         <select name="idcliente" id="selectClientes" class="input-xlarge">
-                            <option value="0">selecione</option>
+                            <option value="">selecione</option>
                             <?php
                             foreach ($clientes as $cliente) {
                                 echo "<option value='{$cliente->id}' ".setValueDefault($cliente->id, $record->idcliente, 'select').">";
@@ -28,7 +31,7 @@
                     <label class="control-label" for="selectMarcas">Marca:</label>
                     <div class="controls">
                         <select name="idmarca" id="selectMarcas" class="input-xlarge">
-                            <option value="0">selecione</option>
+                            <option value="">selecione</option>
                             <?php
                             foreach ($marcas as $marca) {
                                 echo "<option value='{$marca->id}' ".setValueDefault($marca->id, $record->idmarca, 'select').">";
@@ -47,6 +50,7 @@
                     <label class="control-label" for="selectModelos">Modelo:</label>
                     <div class="controls">
                         <select name="idmodelo" id="selectModelos" class="input-xlarge">
+                            <option value="">selecione</option>
                             <?php
                             foreach ($modelos as $modelo) {
                                 echo "<option value='{$modelo->id}' ".setValueDefault($modelo->id, $record->idmodelo, 'select').">";
@@ -65,6 +69,7 @@
                     <label class="control-label" for="selectCombustivel">Combustível:</label>
                     <div class="controls">
                         <select name="idcombustivel" id="selectCombustivel" class="input-xlarge">
+                            <option value="">selecione</option>
                             <?php
                             foreach ($combustiveis as $combustivel) {
                                 echo "<option value='{$combustivel->id}' ".setValueDefault($combustivel->id, $record->idcombustivel, 'select').">";
@@ -131,3 +136,9 @@
     </form>
 </div>
 <!-- /Content -->
+<script>
+    $().ready(function() {
+        Sistema.setValidatorDefaults('.errorHandler', '<div class="alert alert-error"><strong>Ooops!</strong> Preencha todos os campos para continuar.</div>');
+        $("#form-horizontal").validate();
+    });
+</script>

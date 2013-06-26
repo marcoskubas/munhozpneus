@@ -3,6 +3,9 @@
     <h2><?php echo $breadcrumb;?> Combustível</h2>
     <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
+        <div class="errorHandler">
+            <?php echo $this->form_validation->error_string('- ', '<br />', '<div class="alert alert-error">', '</div>'); ?>
+        </div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
@@ -33,3 +36,9 @@
     </form>
 </div>
 <!-- /Content -->
+<script>
+    $().ready(function() {
+        Sistema.setValidatorDefaults('.errorHandler', '<div class="alert alert-error"><strong>Ooops!</strong> Preencha todos os campos para continuar.</div>');
+        $("#form-horizontal").validate();
+    });
+</script>

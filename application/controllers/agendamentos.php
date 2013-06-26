@@ -17,6 +17,10 @@ class Agendamentos extends CI_Controller{
         $this->load->model('veiculos_model','veiculos');
         $this->load->model('produtos_model','produtos');
         $this->load->model('servicos_model','servicos');
+        
+        //Library
+        $this->load->library('form_validation');
+        $this->load->library('my_form_validation');
     }
 
     public function index(){
@@ -98,6 +102,9 @@ class Agendamentos extends CI_Controller{
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
         $this->form_validation->set_rules('idcliente', 'Cliente', 'required');
+        $this->form_validation->set_rules('idveiculo', 'Veículo', 'required');
+        $this->form_validation->set_rules('data_agenda', 'Data', 'required');
+        $this->form_validation->set_rules('hora_agenda', 'Hora', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{

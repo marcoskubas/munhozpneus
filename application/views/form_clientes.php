@@ -3,6 +3,9 @@
     <h2><?php echo $breadcrumb;?> Cliente</h2>
     <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
+        <div class="errorHandler">
+            <?php echo $this->form_validation->error_string('- ', '<br />', '<div class="alert alert-error">', '</div>'); ?>
+        </div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
@@ -65,7 +68,7 @@
                     <label class="control-label" for="selectEstado">Estado:</label>
                     <div class="controls">
                         <select name="idestado" id="selectEstado" class="input-xlarge">
-                            <option value="0">selecione</option>
+                            <option value="">selecione</option>
                             <?php
                             foreach ($estados as $estado) {
                                 echo "<option value='{$estado->id}' ".setValueDefault($estado->id, $record->idestado, 'select').">";
@@ -84,7 +87,7 @@
                     <label class="control-label" for="selectCidades">Cidade:</label>
                     <div class="controls">
                         <select name="idcidade" id="selectCidades" class="input-xlarge">
-                            <option value="0">selecione</option>
+                            <option value="">selecione</option>
                             <?php
                             foreach ($cidades as $cidade) {
                                 echo "<option value='{$cidade->id}' ".setValueDefault($cidade->id, $record->idcidade, 'select').">";
@@ -127,3 +130,9 @@
     </form>
 </div>
 <!-- /Content -->
+<script>
+    $().ready(function() {
+        Sistema.setValidatorDefaults('.errorHandler', '<div class="alert alert-error"><strong>Ooops!</strong> Preencha todos os campos para continuar.</div>');
+        $("#form-horizontal").validate();
+    });
+</script>

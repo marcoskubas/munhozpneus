@@ -221,6 +221,41 @@ var Sistema = {
 
         });
     },
+    setValidatorDefaults : function(errorHandler, message){
+        $.validator.setDefaults({
+            showErrors: function(errorMap, errorList)
+            {
+                var validation = this;
+
+                if (validation.numberOfInvalids() > 0)
+                {
+                    $(errorHandler).html(message);
+                }
+
+                $(errorList).each(function()
+                {
+                    var error = this;
+                    validation.settings.highlight(error.element);
+                });
+
+                for (var i = 0, elements = this.validElements(); elements[i]; i++)
+                {
+                    validation.settings.unhighlight(elements[i], validation.settings.errorClass, validation.settings.validClass);
+                }
+            }
+            ,highlight: function(element)
+            {
+                $(element).parents('.control-group').addClass("error");
+            }
+            ,unhighlight: function(element)
+            {
+                $(element).parents('.control-group').removeClass("error");
+            }
+            ,onfocusout: false
+            ,onkeyup: false
+            ,onclick: false
+        });
+    },
     setTinytable : function(records){
         // Oculta mensagens temporárias
         setTimeout( "Sistema.setMessage('', '')", 3000);

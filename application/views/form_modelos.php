@@ -1,8 +1,11 @@
 <!-- Content -->
 <div id="content" class="container-fluid">
     <h2><?php echo $breadcrumb;?> Modelo</h2>
-    <form class="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
+    <form class="form-horizontal" id="form-horizontal" action="<?php echo base_url().$pagina?>/salvar_alteracao" method="post">
         <div class="mensagem informacao"><span>Os campos com * são de preenchimento obrigatório.</span></div>
+        <div class="errorHandler">
+            <?php echo $this->form_validation->error_string('- ', '<br />', '<div class="alert alert-error">', '</div>'); ?>
+        </div>
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
@@ -25,7 +28,7 @@
                     <label class="control-label" for="selectMarcas">Marca:</label>
                     <div class="controls">
                         <select name="idmarca" id="selectMarcas" class="input-xlarge">
-                            <option value="0">selecione</option>
+                            <option value="">selecione</option>
                             <?php
                             foreach ($marcas as $marca) {
                                 echo "<option value='{$marca->id}' ".setValueDefault($marca->id, $record->idmarca, 'select').">";
@@ -52,3 +55,9 @@
     </form>
 </div>
 <!-- /Content -->
+<script>
+    $().ready(function() {
+        Sistema.setValidatorDefaults('.errorHandler', '<div class="alert alert-error"><strong>Ooops!</strong> Preencha todos os campos para continuar.</div>');
+        $("#form-horizontal").validate();
+    });
+</script>

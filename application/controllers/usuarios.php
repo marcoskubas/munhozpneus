@@ -12,6 +12,10 @@ class Usuarios extends CI_Controller{
         }
         //LOAD MODEL
         $this->load->model($this->alias.'_model',$this->alias);
+        
+        //Library
+        $this->load->library('form_validation');
+        $this->load->library('my_form_validation');
     }
 
     public function index(){
@@ -78,6 +82,7 @@ class Usuarios extends CI_Controller{
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
         $this->form_validation->set_rules('name', 'Nome', 'required');
+        $this->form_validation->set_rules('email', 'E-Mail', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{
