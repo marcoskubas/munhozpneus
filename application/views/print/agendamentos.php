@@ -24,7 +24,7 @@
         </tr>    
         <tr>
             <td colspan="2" class="row-center">
-                <p><strong>ORÇAMENTO N.º 3699</strong></p>
+                <p><strong>ORÇAMENTO N.º <?php echo (1000+$record->id)?></strong></p>
             </td>
         </tr>
         <tr>
@@ -32,7 +32,7 @@
                 <div class="row-fluid">
                     <div class="span12">
                         <div class="span2"><p><strong>Cliente: </strong></p> </div>
-                        <div class="span10"><p>Jonathas Castro Martins</p></div>
+                        <div class="span10"><p><?php echo $cliente->nome?></p></div>
                     </div>    
                 </div>
                 <div class="row-fluid">

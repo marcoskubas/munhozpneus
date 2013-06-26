@@ -66,7 +66,7 @@ class Agendamentos_model extends CI_Model{
     
     public function get_byid($id=NULL){   
         if($id != NULL){
-            $this->db->select('a.id, c.nome AS cliente, CONCAT(m.descricao," ",placa) AS veiculo, a.data_agenda, a.hora_agenda', FALSE);
+            $this->db->select('a.id, a.idcliente, c.nome AS cliente, CONCAT(m.descricao," ",placa) AS veiculo, a.data_agenda, a.hora_agenda', FALSE);
             $this->db->from('agendas a');
             $this->db->join('clientes c','a.idcliente = c.id','inner');
             $this->db->join('veiculos v','a.idveiculo = v.id','inner');

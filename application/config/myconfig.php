@@ -19,4 +19,4 @@ $config['modules_views']    =   array('','agendamentos','veiculos','clientes','s
 | relatórios personalizados
 |
 */
-$config['modules_print']    =   array('','agendamentos','veiculos','clientes');
+$config['modules_print']    =   array('','agendamentos');
