@@ -21,7 +21,7 @@
         echo link_tag('css/tabela.css')."\n";
         echo link_tag('css/tinytable.css')."\n";
         echo link_tag('css/uniform.css')."\n";
-        echo link_tag('css/jquery-ui-dark-hive.css')."\n";
+        echo link_tag('css/jquery-ui-1.10.3.custom.css')."\n";
         ?>
         <script src="<?php echo base_url()?>js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
         <!-- jQuery -->

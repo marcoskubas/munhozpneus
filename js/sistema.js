@@ -185,21 +185,22 @@ var Sistema = {
                                     'title': 'Visualização Registro'
                                    });
     },
-    setDialogView : function(){
-        $( "#dialog-message" ).dialog({
+    setDialogView: function() {
+        $("#dialog-message").dialog({
             autoOpen: false,
             modal: true,
             width: 500,
             height: 350,
-            show: {
-                effect: "blind",
-                duration: 1000
-            },
-            hide: {
-                effect: "explode",
-                duration: 1000
-            }
-        });  
+            buttons: [
+                {
+                    text: "Fechar",
+                    click: function() {
+                        $(this).dialog("close");
+                    }
+                }
+            ]
+
+        });
     },
     setTinytable : function(records){
         // Oculta mensagens temporárias
