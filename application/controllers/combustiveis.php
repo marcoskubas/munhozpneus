@@ -78,7 +78,7 @@ class Combustiveis extends CI_Controller{
     public function salvar_alteracao(){
         $id = $this->input->post('id');
 	$this->load->library('form_validation');
-        $this->form_validation->set_rules('descricao', 'Descrição', 'required');
+        $this->form_validation->set_rules('descricao', 'Combustível', 'required');
         if($this->form_validation->run() == FALSE){	
             if(empty($id)){ $this->cadastro(); }else{ $this->editar($id); }
         }else{
