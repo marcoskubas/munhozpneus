@@ -42,6 +42,15 @@ class Modelos_model extends CI_Model{
         return $this->db->get()->result();
     }
     
+    public function get_bymarca($marca=NULL){   
+        if($marca != NULL){
+            $this->db->where('idmarca',$marca);
+            return $this->db->get($this->table)->result();
+        }else{
+            return false;
+        }
+    }
+    
     public function get_byid($id=NULL){   
         if($id != NULL){
             $this->db->where('id',$id);

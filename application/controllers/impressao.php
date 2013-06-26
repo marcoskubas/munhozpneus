@@ -6,6 +6,20 @@ class Impressao extends CI_Controller{
         
     }
     
+    public function ajax_estados($estado){
+        $this->load->model('cidades_model', 'cidades');
+        $data['cidades'] = $this->cidades->get_byestado($estado);
+        $data['tipo'] = 'cidade';
+        $this->load->view('ajax/options', $data);
+    }
+    
+    public function ajax_marcas($marca){
+        $this->load->model('modelos_model', 'modelos');
+        $data['modelos'] = $this->modelos->get_bymarca($marca);
+        $data['tipo'] = 'modelo';
+        $this->load->view('ajax/options', $data);
+    }
+    
     public function agendamentos ($id){
         //LOAD MODEL
         $this->load->model('agendamentos_model', 'agendamentos');

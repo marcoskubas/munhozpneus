@@ -73,6 +73,14 @@ var Sistema = {
             Sistema.setDeleteItem(idItem);
             $tr.fadeOut('slow');
         });
+        //Habilita ajax Estados to Cidades
+        $('#selectEstado').change(function(){
+            Sistema.setSelectEstado(this.value);
+        });
+        //Habilita ajax Marcas to Modelos
+        $('#selectMarcas').change(function(){
+            Sistema.setSelectMarca(this.value);
+        });
     },
     setDefault : function(){
         Sistema.baseUrl     = $('#base-url').val();
@@ -164,6 +172,32 @@ var Sistema = {
         }else{
             Sistema.setMessage('Mais de um registro selecionado, selecione apenas um registro!', 'aviso');
         }
+    },
+    setSelectEstado : function(estado){
+        var action  = Sistema.baseUrl+'impressao/ajax_estados/'+estado;
+        //Envia requisição e retorna resultado
+        $.ajax({
+            url         : action,
+            type        : 'GET',
+            contentType : 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+            success : function(data){
+                $('#selectCidades option').remove();
+                $('#selectCidades').append(data);
+            }
+        });
+    },
+    setSelectMarca : function(marca){
+        var action  = Sistema.baseUrl+'impressao/ajax_marcas/'+marca;
+        //Envia requisição e retorna resultado
+        $.ajax({
+            url         : action,
+            type        : 'GET',
+            contentType : 'application/x-www-form-urlencoded; charset=ISO-8859-1',
+            success : function(data){
+                $('#selectModelos option').remove();
+                $('#selectModelos').append(data);
+            }
+        });
     },
     setBtnPrint : function(){
         var countCheck = $('.checker[id^=uniform-row] .checked').length;
